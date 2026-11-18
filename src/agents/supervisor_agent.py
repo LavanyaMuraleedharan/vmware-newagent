@@ -1,6 +1,7 @@
 
 import asyncio
 import json
+import tempfile
 import importlib.util
 import inspect
 from pathlib import Path
@@ -11,24 +12,21 @@ from datetime import datetime
 # 1. PROJECT CONFIGURATION
 # ============================================================
 
-ROOT = Path(__file__).resolve().parents[2]
-
-COST_AGENT_SCRIPT = ROOT / "src" / "agents" / "cost_agent.py"
-FINOPS_AGENT_SCRIPT = ROOT / "src" / "agents" / "finops_agent.py"
+TEMP_ROOT = Path(tempfile.gettempdir())
 
 COST_AGENT_REPORT = (
-    ROOT / "data" / "processed"
-    / "cost_agent" / "cost_agent_report.json"
+    TEMP_ROOT
+    / "cost_agent_reports"
+    / "cost_agent_report.json"
 )
 
 FINOPS_AGENT_REPORT = (
-    ROOT / "data" / "processed"
-    / "finops_agent" / "finops_agent_report.json"
+    TEMP_ROOT
+    / "finops_agent_reports"
+    / "finops_agent_report.json"
 )
 
-OUTPUT_DIR = (
-    ROOT / "data" / "processed" / "supervisor_agent"
-)
+OUTPUT_DIR = TEMP_ROOT / "supervisor_agent_reports"
 
 OUTPUT_JSON = OUTPUT_DIR / "supervisor_agent_report.json"
 OUTPUT_MD = OUTPUT_DIR / "supervisor_agent_report.md"

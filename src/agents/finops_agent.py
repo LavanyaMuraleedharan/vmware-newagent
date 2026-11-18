@@ -1,4 +1,4 @@
-
+import tempfile
 import json
 from pathlib import Path
 from datetime import datetime
@@ -10,15 +10,15 @@ from datetime import datetime
 
 ROOT = Path(__file__).resolve().parents[2]
 
+TEMP_ROOT = Path(tempfile.gettempdir())
+
 INPUT_JSON = (
-    ROOT
-    / "data"
-    / "processed"
-    / "cost_agent"
+    TEMP_ROOT
+    / "cost_agent_reports"
     / "cost_agent_report.json"
 )
 
-OUTPUT_DIR = ROOT / "data" / "processed" / "finops_agent"
+OUTPUT_DIR = TEMP_ROOT / "finops_agent_reports"
 
 OUTPUT_JSON = OUTPUT_DIR / "finops_agent_report.json"
 OUTPUT_MD = OUTPUT_DIR / "finops_agent_report.md"
