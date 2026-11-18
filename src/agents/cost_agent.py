@@ -1,5 +1,6 @@
-
+import tempfile
 import asyncio
+import os
 import json
 import traceback
 import sys
@@ -21,11 +22,16 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+load_dotenv(ROOT / ".env")
+
 from src.llm.llm_service import generate_response
 
-MCP_URL = "http://127.0.0.1:8000/mcp"
+MCP_URL = os.getenv("MCP_SERVER_URL", "").strip()
+MCP_AUTH_TOKEN = os.getenv("MCP_AUTH_TOKEN", "").strip()
 
-OUTPUT_DIR = ROOT / "data/processed/cost_agent"
+# Store generated reports in the writable temporary directory
+OUTPUT_DIR = Path(tempfile.gettempdir()) / "cost_agent_reports"
+
 OUTPUT_JSON = OUTPUT_DIR / "cost_agent_report.json"
 OUTPUT_MD = OUTPUT_DIR / "cost_agent_report.md"
 
@@ -75,8 +81,6 @@ COMPUTE_GPU_MONTHLY_SAVINGS_INR = 15000.00
 DATABASE_RECOVERY_PERCENTAGE = 0.05
 
 LICENSING_RECOVERY_PERCENTAGE = 0.25
-
-load_dotenv(ROOT / ".env")
 
 
 # ============================================================
@@ -1557,7 +1561,22 @@ async def run_cost_agent(user_request):
 
             print("\nConnecting to MCP server...")
 
-            async with streamablehttp_client(MCP_URL) as (
+            if not MCP_URL:
+                raise RuntimeError("MCP_SERVER_URL is not configured")
+
+            if not MCP_AUTH_TOKEN:
+                raise RuntimeError("MCP_AUTH_TOKEN is not configured")
+
+            headers = {
+                "Authorization": f"Bearer {MCP_AUTH_TOKEN}"
+            }
+
+            print(f"Connecting to remote MCP server: {MCP_URL}")
+
+            async with streamablehttp_client(
+                MCP_URL,
+                headers=headers
+            ) as (
                 read,
                 write,
                 _
@@ -1680,3 +1699,4 @@ if __name__ == "__main__":
         asyncio.run(
             run_cost_agent(request)
         )
+
