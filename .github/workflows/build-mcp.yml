@@ -1,0 +1,62 @@
+
+name: Build and Deploy VMware MCP Image
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/mcp/**'
+      - 'data/**'
+      - 'requirements-mcp.txt'
+      - 'Dockerfile'
+      - '.dockerignore'
+      - '.github/workflows/build-mcp.yml'
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  ACR_NAME: vmwaremcp5265
+  REGISTRY: vmwaremcp5265.azurecr.io
+  IMAGE_NAME: vmware-mcp
+
+jobs:
+  build-and-push:
+    name: Build and Push MCP Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Azure login using OIDC
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Login to Azure Container Registry
+        run: az acr login --name $ACR_NAME
+
+      - name: Build MCP Docker image
+        run: |
+          docker build \
+            -f Dockerfile \
+            -t $REGISTRY/$IMAGE_NAME:v1 \
+            -t $REGISTRY/$IMAGE_NAME:${GITHUB_SHA} \
+            .
+
+      - name: Push MCP Docker image
+        run: |
+          docker push $REGISTRY/$IMAGE_NAME:v1
+          docker push $REGISTRY/$IMAGE_NAME:${GITHUB_SHA}
+
+      - name: Verify pushed image
+        run: |
+          az acr repository show \
+            --name $ACR_NAME \
+            --image $IMAGE_NAME:v1
