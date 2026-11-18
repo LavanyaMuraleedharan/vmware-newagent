@@ -11,7 +11,9 @@ from datetime import datetime
 # ============================================================
 # 1. PROJECT CONFIGURATION
 # ============================================================
-
+ROOT = Path(__file__).resolve().parents[2]
+COST_AGENT_SCRIPT = ROOT / "src" / "agents" / "cost_agent.py"
+FINOPS_AGENT_SCRIPT = ROOT / "src" / "agents" / "finops_agent.py"
 TEMP_ROOT = Path(tempfile.gettempdir())
 
 COST_AGENT_REPORT = (
