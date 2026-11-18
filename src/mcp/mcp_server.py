@@ -2,9 +2,61 @@
 from pathlib import Path
 import json
 import pandas as pd
+import os
+import hmac
+import uvicorn
 
 from mcp.server.fastmcp import FastMCP
+class BearerAuthMiddleware:
 
+    def __init__(self, app, expected_token):
+        self.app = app
+        self.expected_token = expected_token
+
+    async def __call__(self, scope, receive, send):
+
+        if (
+            scope["type"] == "http"
+            and scope["path"].rstrip("/") == "/mcp"
+        ):
+
+            headers = dict(scope.get("headers", []))
+
+            authorization = headers.get(
+                b"authorization", b""
+            ).decode()
+
+            scheme, _, supplied_token = authorization.partition(" ")
+
+            valid = (
+                scheme.lower() == "bearer"
+                and hmac.compare_digest(
+                    supplied_token,
+                    self.expected_token
+                )
+            )
+
+            if not valid:
+
+                body = b'{"error":"Unauthorized"}'
+
+                await send({
+                    "type": "http.response.start",
+                    "status": 401,
+                    "headers": [
+                        (b"content-type", b"application/json"),
+                        (b"content-length", str(len(body)).encode()),
+                    ],
+                })
+
+                await send({
+                    "type": "http.response.body",
+                    "body": body,
+                })
+
+                return
+
+        await self.app(scope, receive, send)
 
 # ============================================================
 # PROJECT CONFIGURATION
@@ -815,5 +867,25 @@ def get_cost_agent_analysis() -> str:
 # ============================================================
 
 if __name__ == "__main__":
-    print("Starting Infrastructure FinOps MCP Server...")
-    mcp.run(transport="streamable-http")
+
+    mcp_token = os.getenv("MCP_AUTH_TOKEN")
+
+    if not mcp_token:
+        raise RuntimeError(
+            "MCP_AUTH_TOKEN is not configured"
+        )
+
+    app = BearerAuthMiddleware(
+        mcp.streamable_http_app(),
+        mcp_token
+    )
+
+    print(
+        "Starting authenticated Infrastructure FinOps MCP Server..."
+    )
+
+    uvicorn.run(
+        app,
+        host="0.0.0.0",
+        port=int(os.getenv("PORT", "8000"))
+    )
