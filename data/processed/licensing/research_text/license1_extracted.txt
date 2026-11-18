@@ -1,0 +1,575 @@
+===== PAGE 1 =====
+The following paper was originally published in the
+Proceedings of the Eleventh Systems Administration Conference (LISA ’97)
+San Diego, California, October 1997
+For more information about USENIX Association contact:
+
+1, Phone: 510 528-8649
+
+2. FAX: 510 548-5738
+
+3. Email: office@usenix.org
+
+4. WWW URL: http://Awww.usenix.org
+
+===== PAGE 2 =====
+° ° ° °
+Monitoring Application Use
+° °
+with License Server Logs
+Jon Finke — Rensselaer Polytechnic Institute
+ABSTRACT
+One feature of our campus-wide UNIX service is the wide selection of scientific and
+engineering applications such as AutoCad, Pro/ENGINEER, Maple, etc. We currently have 32
+“major application packages” site licensed, representing an annual cost of almost $300,000. A
+number of the licenses were based on concurrent usage, so around budget time, people started to
+ask if we had an appropriate number of licenses.
+By adapting some previously developed software for tracking workstation use, we were
+able to determine who was using which applications, and concurrent usage information for these
+products and to reduce the number of concurrent users allowed to reflect actual use (plus some
+headroom). By applying these figures to just four applications, we were able to obtain a savings
+of $43,000 without cutting any service to our users.
+This paper discusses the methods we used to collect, process, and display this information,
+as well as some of the problems we encountered.
+Introduction problems was the command line user interface. Each
+. : processing run required a number of parameters to be
+Three years ago, we presented a paper on moni- ‘ nn oe
+. . . A set, resulting in longer and longer command lines.
+toring workstation usage with a relational database S : pied
+. ome common setting combinations were grouped
+[4]. This system worked by going to each machine and . . .
+
+. . together, but adding or changing them required recom-
+reading the /var/adm/wtmp files, and storing the ‘line the program. Even changing just one of the
+contents in the database. When faced with the task of pring Program. ging J
+
+. re “aoe i p we parameters would require rerunning the program,
+collecting application usage information, this system . .
+Fi 5 . ° which repeated the database query step, obtaining the
+looked to provide a good starting point. We briefly . . : :
+. : . demographic information again. It was generally just a
+examined at least one commercial product, but it did . -
+oan : slow process, and it was just not ready to accommo-
+not take advantage of user demographic information — i .
+: . : . date the demands placed on it to handle many different
+and the real show stopper at an educational site — it 5 of | a informati Men he
+cost money. types of license server information. It also had to do
+a - . much of the graphics processing. Although it was
+While some of the applications we license are using jgraph [5] for actual postscript generation, there
+node locked,’ a number of them rely on some sort of was still a lot of work involved, and there were some
+license server. One of our objectives is to have every limits to what j graph? could do for us. Given these
+application available on any of our machines. This limitations, as well as the need to accommodate
+way, rather than having to get a license for every changes in the data storage, we decided to replace the
+machine, the license servers allow us to license a lim- processing program. An X-based spreadsheet pro-
+ited number of concurrent active copies of the applica- gram we had already installed had an API that allowed
+tion. As part of this process, the license servers often us to load data directly into the spreadsheet, and build
+wrote log files with session information. While these on the spreadsheet command menus. This also
+log files were much different in format from the allowed us to use the graphics capability of the spread-
+WTMP files, they were recording similar information. sheet for output, as well as allow people to manipulate
+We were able to adapt our existing Wtmp_Collec- the data in a familiar spreadsheet environment.
+tor program to pick up application usage information With the updated data collector in place, and the
+from these logs, and save them in database tables. This . . - 7
+i : new interface using the spreadsheet, we are now able
+code was definitely worth keeping. . oan . .
+a . to track the usage of many of our applications in addi-
+On the other hand, the original WTMP analysis tion to our workstations. This also simplifies the
+program had some serious limitations; one of the big preparation of reports and graphs for management on
+a timely basis, without too much time or effort.
+TA fun process where we have to supply a list of host ID
+numbers to the vendor, and they in turn return a list of magic 2Jgraph is a program that reads a stream of simple drawing
+numbers which we load into some file, and if the planets are instructions, and generates PostScript on stdout. It works
+aligned just right, things actually work. Doing this for hun- nicely in batch environments but it could not handle pie
+dreds of workstations is worthy of a paper in its own right. charts.
+1997 LISA XI — October 26-31, 1997 — San Diego, CA 17
+
+===== PAGE 3 =====
+Monitoring Application Use with License Server Logs Finke
+Taking License with Servers — Data Problems The first difference we had to accommodate
+. we . between WTMP records and license server logs, was
+The first step in the process of monitoring appli- .
+: : that while all of the WTMP records on a particular
+cation use was to extract the raw data from the license .
+~ ae host applied to only that host, there may be more than
+server? log files and load it into the relational database a . . :
+. rs oe . one license server running on a given machine. In
+tables. Although the information in the license server . si . A
+. ra order to determine where in the particular log file it
+log files was in many ways similar to what we were .
+: ce needed to resume processing, we needed to use both
+getting from the WTMP logs, there were some signifi- . :
+2 we the Lsrv_Host_ID and Application columns
+cant differences as well. In addition, each type of log . . .
+~ . - to determine when we last collected records.
+file had a different record format. i a
+Database Record Format . An additional complication _was that some
+. . : license servers provided license serving for more than
+__ One of the gains of this project was to put all one application; this required the addition of a subtype
+license server records into a consistent format thereby field in each record to differentiate between applica-
+simplifying later analysis and allowing us to compare tions served by a particular license server process. To
+usage of different applications. In _ determining the do this, we simply redefined the Type column, and
+table layout, we started with the original WTMP table for each license server (as defined in the Applica-
+layout, redefined some columns, and added some new tion column), would use one or more subtypes. Due
+columns as seen in Table 1. We continued attempts to to the number of different applications, both the
+normalize some of the data at collection time, convert- Application and Type columns are required for
+me host names to host_IDs* and user names to owner the identification of a particular program product.
+ID. This distinction would be significant for the data
+>= . extraction process. It may have been preferable to
+'A note on the term License Server. From an operational make the Type column globally unique.
+standpoint, we often say that “machine xxx is a license serv- . .
+er”, That means that it is running one or more license server The last major change was the addition of a third
+processes. However, in this paper, when we refer to a license host field in the record. In the wtmp records, we
+server, we are generally referring to a specific process on a recorded from which host the record came, and for
+machine, providing licensing for one specific application or remote sessions, the host from which the user had con-
+set of applications. an nected to the target machine. With license servers, we
+‘A host_ID is an internal database key that identifies a par- also had to record the license server host in addition to
+ticular host. Since all hosts of interest are already in the the host on which the user was running the applica-
+database, this key is easy to obtain. tion, and in some cases, the actual location of the user.
+5Like the host_ID, the owner_ID is a database key that ° meee .
+uniquely identifies the user, even if the UNIX username is
+eventually re-used.
+Column Type Table Notes.
+Username char(8) Both Unix username.
+Owner Number Both Internal DB key for that username.
+Host_ID Number Wtmp Host_ID of the machine where the session took place.
+Host_ID Number License —_ Host_ID of the user’s machine, if available.
+Lsrv_Host_ID Number License —_Host_ID of the license server.
+Application char(4) License A short tag to identify which license server recorded
+the record.
+On Time Date Both The time and date when the session started.
+Off Time Date Both The time and date when the session terminated.
+Line char(12) | Wtmp The TTY of the session, used to match disconnects
+with connects.
+Line char(12) License _A tag to match session start with session end.
+Type char(1) Wtmp A code indicating the TYPE of session (telnet, ftp,
+etc.)
+Type char(1) License _A code indicating subtypes for a license server.
+Remote_Host —char(16) — Both Machine where user originated the session if not the
+same as the host in host_ID above.
+Rem_Host_ID Number — Both The host_ID of the remote host if it can be deter-
+mined and is local.
+Table 1: License Log Table Layout
+18 1997 LISA XI — October 26-31, 1997 — San Diego, CA
+
+===== PAGE 4 =====
+Finke Monitoring Application Use with License Server Logs
+Care and Feeding of License Server Logs but the most recent rolled log file. This leaves a little
+In order to provide a handle on the use of disk bit of a record behind on the machine, as well as the
+space by system log files, many of our log files are current active log file.
+“rolled” on a periodic basis. That is, the existing file A structure built into the program stores the list
+(named filename ) is renamed to filename.1, file- of known license servers. This structure includes the
+name.1 is renamed to filename.2, and so on for some application name for the license server (which is
+number of generations® until the oldest one is deleted. stored in the Application column of the
+This is normally done via cron and everyone is happy. database), the log file name, a time conversion routine,
+As it turns out, many of the general UNIX log files are a parsing routine, and a list of valid subtypes (for
+written via syslog, and fortunately, one of these “roll translation into the Type column). Since many of the
+log file” cron jobs also kill ~-HUPs syslog so the record formats are similar, this allows for a lot of code
+new files are used. Other files, such as WTMP, are sharing between different log formats. While it might
+opened before each use, so the new file is used right be preferable to store this information in a file instead
+away. of hard coding it, the parsing of the different formats
+Unfortunately, the license servers generally do is tricky enough that it is easier to hard code things
+not write their log files via syslog, and so that while than to encode the parsing information into a file.
+the log files might get rolled, the server keeps the file Since the collection program deals with many
+handle open and continues to write to the old file, different sources for the records, it is useful to convert
+leaving the newer files empty. To make matters worse, the time and date into an easy to work with standard
+we found some cases of license servers that had been format. Internally, all date fields are converted to a
+up long enough that the active file was rolled off the standard form of seconds since 1 Jan 1970. Not count-
+end and deleted. This resulted in no information being ing the binary log file formats, we found four different
+available, and the space being held by the still open date formats’ that we had to handle.
+log file until the license server was restarted or the Most of the logs are in a readable text format.
+machine rebooted. You can read in a record, check the timestamp with the
+This was not a good state of affairs. As a short time conversion routine, and if you are interested in
+term work around, we moved the roll code into the the record, call a sub-parse routine that returns point-
+startup script for each license server, and set the num- ers to username, remote host, record type, etc., which
+ber of generations to a moderately large number. We are then inserted into the database. The actual pro-
+then scheduled a weekly reboot of each license server cessing is based on the type of record. There is no
+machine. This would ensure that each license server standard for records types of course; each server uses
+would get restarted (and the log files rolled) at least its own keywords to indicate the type of record. So far,
+once a week. The collection process is still done on we have seen “OUT:”, “IN:”, “issued”, “returned”,
+an occasional basis, and the large number of genera- “connect to”, “closed connection to”, and others
+tions lets us get away with not collecting data fre- along those lines.
+quently. The actual deletion of old log records is The first record type is a session start. Before we
+hopefully now being done by the collection process, insert a new record into the database, we check to see
+rather than the log file rolling process. if there is a session open on that Lsrv_Host_ID,
+Operation of the Collection Program Application and Line combination; if there is,
+We periodically run the license server log collec- we terminate it on the assumption that we must have
+tion program on all of our license serving machines. missed the session end record, since someone else is
+The general mode of operation is to scan all license now using that same Line. This might happen in the
+server logs (and wtmp logs), and clean up when done. case of an application that does not terminate cleanly,
+For testing, we generally run the program for just one and so does not notify the license server on termina-
+specific type and without the clean option. tion. We then insert a new session record into the
+it di . database.
+In scan mode, the collection program looks for a
+log file for each of the defined license servers and, if it The second type of record is for a session end.
+finds one, checks in the database for the last time we For this case, the database is searched for a record for
+collected records for that particular license server on the same Lsrv_Host_ID, Application and
+that particular host. It then reads through the rolled log Line that does not have an Of f_Time set. Ideally
+files until it finds the appropriate place to start. It next there is only one, and the record is updated to reflect
+reads and processes the records, moving up through the end of the session. If we find more than one, we
+the rolled log files until it has read all the available mark all of them as done, although we should set an
+records. If clean mode is also enabled, it will delete all error flag in the record.
+SS We wrote time conversion routines to handle: MM/DD
+®Actually, they are done in reverse order for obvious rea- HH:MI:SS, MM/DD HH:MI, MON DD HH:MLESS (but no
+sons. year!), and MM/DD/YY HH:MI:SS.
+1997 LISA XI — October 26-31, 1997 — San Diego, CA 19
+
+===== PAGE 5 =====
+Monitoring Application Use with License Server Logs Finke
+The third record type is a server restart. In this two workstations, or just had two sessions going, we
+case, we go through and close all open records for that faced the possibility of marking the wrong sessions as
+Lsrv_Host_ID and Application. The closed. We also had cases where the actual username
+assumption here is that we will not get proper session and hostname that got logged was anyuser@any-
+end records, since the server state has most likely been host; not very helpful.
+lost. Another potential source of problems comes
+Some license servers also generate time stamps. from software upgrades. We have experienced prob-
+This is especially nice when you have backup servers lems with our WTMP logging after OS upgrades. On
+running. For example, a server may be up for a long several occasions, we discovered that although we
+time, but may never be handling any requests since it were successfully recording the start of a session, we
+is a backup server and the primary has stayed up. In were missing the end of a session, making it impossi-
+such an instance, the timestamp records allow you to ble to determine usage of labs. We could possibly see
+record that you at least checked the server. similar problems when we upgrade license servers.
+Problem Data In another case, we stopped getting session
+records from console users altogether, making it very
+We have run into some problems with attempting difficult to determine if the workstation labs were
+to process these log files. In one case, we were being used. On reporting this to the vendor, we were
+attempting to catch up on some old records (before we told that it was not a bug, but rather that there was no
+had implemented rolling for that particular license interest in tracking console users. Finding this expla-
+server), and discovered that the time stamps did not nation unacceptable, we have since modified the login
+include the year, and we had three years’ worth of data procedure to capture the information we need.
+in the one file. The code that normally made a guess As we identified these various problems, we
+about the year ended up in a time warp. Fortunately, attempt to get help from the vendors in correcting
+that was a minor service. them. We have also standardized our log file rolling
+Some of the log files actually use multiple differ- script, and seem to be getting better at operating in a
+ent formats in the file, and this can be very annoying consistent manner.
+when attempting to extract times or parse the fields.
+Other files are not in a text format. In some cases, Demographic Breakdowns or Breakdowns in
+such as the WTMP files, the record format is defined Demographics
+in a library. In other cases, such as the NETLS license All of our user accounts are managed with a rela-
+server, the files are written in a proprietary database tional database, which can provide all sorts of demo-
+format, and instead of a record definition, they give graphic information about each userid, such as status
+you a program to extract data on demand. Although I (Student, Employee, Alumnus, etc.), departmental
+was tempted to use this program, they had no facility affiliation, campus address, and so forth. We are able
+to read an alternate database file, so all rolled informa- to access this data when processing the log records
+tion was lost. from the WTMP database to provide additional infor-
+Since we could not locate any documentation as mation about the type of user.
+to the file format, we had to reverse engineer the log We still faced some of the same problems with
+file format. We were eventually able to figure out the demographic analysis, that we did with the original
+enough to eventually decode the records. A vendor WTMP project. Specifically, while we do record the
+supplied struct definition would have made things UNIX userid, the demographic information is obtained
+a lot easier. dynamically from the relational database, and that
+Another source of error was with the assumption information is the current data, rather than the infor-
+that keys we picked to identify session terminations mation that was in force at the time of the actual ses-
+were in fact unique. We had the case where one appli- sion. This results in what appears to be an increasing
+cation was pretty slow to start up. Some users would amount of use of our facilities by upperclassman and
+double click on the application name, starting two alumni as we examine older log records.
+copies. Sometimes they would even do it again, start- One approach to solving this problem is to add
+ing two more. Eventually, the first copy would appear, some additional fields. For example, when updating
+and then the second would appear right on top of the the demographic tables, rather than just making the
+first. From the user point of view, they double clicked, change such as changing Class_Year from “fresh-
+and finally the application appeared and was opera- man” to “sophomore”, you could set an End_Date
+tional. What the user did not know was that they had field in the current record to the current date and insert
+extra copies running in the background.) a new record with the Start_Date also set to the
+We also had some license servers (or applica- current date and the Class_Year field set to
+tions, we never determined who was not cooperating), “sophomore”. Similarly, when doing demographics
+that would not report the machine name on which the lookups, instead of reading the latest demographic
+user was working. For example, if a user was using information, you select the record that matches the
+20 1997 LISA XI — October 26-31, 1997 — San Diego, CA
+
+===== PAGE 6 =====
+Finke Monitoring Application Use with License Server Logs
+appropriate time frame. In this way, you get the cor- (based on host domain), versus the general population.
+rect class year (or other desired demographic informa- With this, the administrators in the other department
+tion) that applied at the time the session took place. were able to justify paying for part of the cost of the
+This does however, involve changing the methods application license, reducing the load on our software
+used to maintain the demographic data, and will cause budget.
+the demographic tables to grow, rather then stay at a . .
+steady state size (since we will be adding records Programming to Xess — Talking to a Spreadsheet
+rather than just changing them.) One of the licensed applications we had for our
+A second approach would be to record the demo- UNIX workstations, was an X-based spreadsheet
+graphic information of interest in the actual log called Xess. One of the interesting features of this
+records. This might be especially worthwhile if there a was an API toolkit [1] that allowed us to write a pro-
+few fields that will be needed on a repeated basis, or gram that could connect to a running copy of the
+that change frequently. Clearly however, some spreadsheet, add new menus and menu items, load
+thought needs to go into the type of reports and break- data into the spreadsheet, and generate graphs.
+downs that will be needed. Another drawback to this Right out of the box, Xess looks like a normal
+approach is the delay between writing the record to the spreadsheet, with tool bars and pull-down menus, and
+log file, and the eventual collection. If you are not so on (see Figure 1). By opening the Connections
+collecting records on a timely basis, the demographics menu, you can enable external connections? to the
+may change between the time of use and the time of spreadsheet, which follow the X security rules. The
+collection. external application is able to invoke many of the
+Unlike the WTMP collection, which was con- functions available to the console user, as well as
+fined just to hosts under central control, some of the insert data and formula into cells and read information
+licensed software is available for use by machines run back out. More importantly, it allowed us to define
+by other departments. Unfortunately, there is no additional menus that could then invoke event-han-
+requirement that they use the same usernames that we dling routines to perform the desired functions. This
+use in the central systems. Although we can provide “dual control” feature was very useful during the
+breakdowns of usage by machine and even by depart- development process, as we were able to have the pro-
+ment, the user demographics are not valid for these gram load some data into the spreadsheet, we could
+“foreign” systems. We need to add a check in the col- manually manipulate it, figure out pretty graphs and so
+lection program to determine if the user host is legal on, and then encode the desired graphs and functions
+for demographic breakdowns or not, and include that into one of our own menu items.
+status in record. Since the list of hosts where we can The data analysis generally consists of two
+get valid demographics is subject to change as hosts phases, data selection followed by data processing. In
+are added to (or removed from) the central system the data selection phase, you need to specify the type
+over time, a Demographics_Valid flag needs to or types of records you want, and the time period of
+be set at data collection time. interest. You may also want to specify additional con-
+Even if we are not able to determine valid demo- ditions on the records. Once this is done, you then
+graphic information on the users of a particular ser- query the database for the desired records. As you can
+vice, this data can still be of use. For one particular
+application, we were able to generate a pie chart 8This can also be defaulted to enabled with an X resource
+showing usage by users in a particular department setting.
+(@) Untitled | E]
+File Edit Search View Format Tools Options Graph Connections Help
+(a) owe] fe } 3) 2) | = | te
+[Aq] [ | |
+A
+Figure 1: Default Xess Screen
+1997 LISA XI — October 26-31, 1997 — San Diego, CA 21
+
+===== PAGE 7 =====
+Monitoring Application Use with License Server Logs Finke
+see in Figure 2, we have added a number of additional The current version of Xess does not support
+menus to the spreadsheet session. Most of the selec- cascading menus. This became a problem when deal-
+tion phase is handled via the Select menu. ing with some of the license servers that had a lot of
+Once you have set the desired selection options, sub-codes. We got around this in the Select menu,
+the last item you pick from the Select menu is the by prefixing each license server name with a fraction
+Search Database option, which extracts the data made up of the number of selected sub-codes over the
+from the Oracle database. Once this is done, the total number of sub-codes for that particular server.
+Select menu is inactivated? and the Process The extraction program would also create (or rename)
+menu is activated. At this point, you can select the a new menu for that server, with each of the individual
+type of data processing you ‘want. The spread- sub-code entries available for selection as desired.
+sheet/menu interface made it easy to add more con- This approach might not be as elegant as cascading
+trols and options to the program. For the most part, the menus, but it works.
+rest of the new menus just set flags and values in the We frequently want to see usage as a function of
+program and modify the actions of the Process the time of day, and often we want that to be an aver-
+menu items. We frequently want to compare different age for more than one day of use. To this end, we
+demographic elements, and the Column and Row added a Time In Columns option to the
+menus let us set what we put in the columns and what Datatype menu. When this is selected, the columns
+we put in the rows of the spreadsheet. We use the of the spreadsheet each represent a specific time
+DataType menu to select what values we put into period. For example, in Table 2, we have few days of
+the spreadsheet (such as duration, number of sessions, usage data.'0
+etc.). A lot of different switch settings go into the Although we could include the date with the
+Options menu. Unlike the Previous three menus time, and use more than 24 columns, we instead wrap
+which act like radio buttons (selecting one deselects the data at midnight and start the next day (we actually
+the others), the options are all set and cleared indepen- duplicate midnight at the other end). Once we have
+dently. During development, the Debug menu pro- wrapped all of the data, we can simply insert a func-
+vided a handy place to put commands to provide tion to calculate an average load. In cases where there
+debugging information, as well as to increase or is a maximum number of concurrent sessions (such as
+decrease the verbosity level of the program. a set number of licenses, or a fixed number of
+machines in a room for WTMP records) we were able
+{active menus and menu items are indicated by being ‘This happens to be usage in a workstation lab, but the
+grayed out. In Figure 2, the Process menu is currently in- same processing applies to license server stats. Some data
+active. excluded for formatting reasons.
+9) eines Ef
+Fie Eat Seach Yirw Forest Teoh Gpticen Gragh Conmctions Select Froces) Crhmn flaw OatsType gfe Oebep TRE Lim
+Be a) | Come 3) (eS) al Sell x!
+fur}
+
+Santee | Enda | Curse |
+re ——
+= I
+
+Figure 2: Enhanced Xess Screen
+00:00 | 01:00 | 02:00 | 03:00 | 04:00 | 05:00 | 06:00 | 07:00 | ... |
+12/02/96 | 5.471 | 1.480 | 0.096 | 0.300 | 0.001 | 0.000 | 0.024 | 1.524 | |
+12/03/96 5.114 | 5.108 | 3.794 | 2.000 | 1.408 | 1.194 | 0.534 | 1.769 ||
+12/04/96 5.816 | 2.973 | 3.604 | 2.053 | 1.056 | 1.000 | 1.200 | 1.768 ||
+Mean(n=3) | 4.995 | 3.848 | 3.537 | 2.794 | 1.741 | 1.244 | 1.124 | 1336 [|
+%tod | Tha] 580] 805 | 399 | m9] 78] 161] wt] |
+AvgLoad | 0.714 | 0.550 | 0.505 | 0.399 | 0.249 | 0.178 | 0.161 | 0.191 | |
+Table 2: Sample Spreadsheet Data.
+22 1997 LISA XI — October 26-31, 1997 — San Diego, CA
+
+===== PAGE 8 =====
+Finke Monitoring Application Use with License Server Logs
+figure a Site Load; the percentage of the resource distinct advantage we had in this rewrite is that we
+in use, in this case, workstations. At this point, it is a were building a new application from the ground up,
+trivial matter to have the spreadsheet generate a graph yet we had a pretty clear idea of where we wanted to
+of average usage versus the time of day. go, and what problems we had encountered in the first
+We often want to compare usage patterns over implementation. This helped us with designing data
+different time periods. To facilitate this, we added an structures and the data flow through the program.
+option that, after the data is displayed, and the desired In the original program, it was sometimes diffi-
+graphs are produced, it logically resets the origin of cult to break down the data by any arbitrary demo-
+the spreadsheet (cell Al) to the row after the last graphic value. There was a lot of special case code,
+active row, and then prompts for a new date range or and adding new types was tricky. In addition, we often
+search target. You can then select new data, load it wanted to break down records by two keys at once,
+into the spreadsheet, and generate new graphs for that which did not work at all well (you could break down
+selection. The program keeps track of the summary in one direction, but not the other).
+line of the past graphs, and combines them with the The new program needed to be much more flexi-
+current summary, and generates a new graph with the ble, and ideally, all data should be an abstraction. We
+different data sets displayed on the same axis. In Fig- also had a solid idea of what we were going to do with
+ure 3 for example, we have four weeks of data for two the data; specifically, dump it into a spreadsheet for
+different labs, displayed on the same axis. display. This gave us three ways to break down the
+We added options to dump data in a raw form, and data; just provide a total in a single cell, which would
+with selected demographic information added in case be a zero axis case, break down by one demographic
+the researcher wants to do some other types of analy- item, producing a single row or column, which would
+sis. We were also able to dump session information to be the one axis case, or break it down by two demo-
+generate histograms of session duration, using the graphic items, which would be a two axis case, essen-
+histogram graph option of Xess. Since all of the tially a mesh." The determination as to how to divide
+original functions of Xess are still available, after the data, is controlled by the Row and Column
+someone selects and processes data, does additional menus. _
+calculations, figures out what graphs they want and so : . :
+on, they can then save the spreadsheet, using the ; Aes a record is read in, the od and count demo-
+options in the standard £ile menu, and allow others graphic 4 ements are determined , and t ne whey ked
+to look at the information at a later date. In fact, the compare a aeoted ene d ina mu tip! yon yi
+data in Table 2 and graph in Figure 3 were taken from Tube 3 an inser or a he to ‘nea entries. if
+arun done months ago, and reloaded into Xess for this able 3, we are looking at the number of sessions 0}
+paper. Data Explorer, and breaking it down by the school
+affiliation in the rows, and the class year in the
+It’s Easier the Second Time Around columns. Each entry is added in three times; once for
+In the original WIMP analysis, we were able to The code to manage all of the data elements in the mesh
+convert session data to load information, by creating a was a good exercise in pointers and linked lists. I was able to
+time-line, divided up into discrete segments of time, successfully handle the three cases of n=0,1 or 2. I never
+and “adding” in sessions to the appropriate bucket. tried to take it into more dimensions, although that might be
+Since this worked well, we decided to keep it. A possible.
+Compare Date ranges for Cary and Nugent
+400 — 03/31-04/03/97 C
+e — 04/07-04/11/97 C
+g 80 ON — 04/14-04/18/97 C
+eae
+a, 60 Ue pPERO — 04/21-04/25/97 C
+ed S
+3 404 \ es Bf > < ---03/31-04/03/97 N
+ce ENON LBE ZO ~~~ 04/07-04/11/97 N
+2 QS p=
+® 9 SS ~ =~ 04/14-04/18/97 N
+ecsoop9090900900900090090090009090 ~~~ 04/21-04/25/97 N
+SESE SSeeseeeeseseseseeeeesee2ee22
+STNG FHGRADSOMCNHNYHOGRHGDSHNNS
+SSSCSSCCOSCSCSS Tere EET HE HEANNNGS
+Time of Day
+Figure 3: Combining Graphs on one Axis
+1997 LISA XI — October 26-31, 1997 — San Diego, CA 23
+
+===== PAGE 9 =====
+Monitoring Application Use with License Server Logs Finke
+the school, once for the class year, and once for that single, multi-million record table to a single file, and
+combination of school and class year. In this case, we finding single chunks of disk space big enough was
+can see the students in the school of science make the becoming a definite challenge.
+most use of the application, but that is mostly by Ph.D. To work around this problem, we decided to
+candidates, whereas the Engineering students use it at break up the data into one-month sections determined
+the Masters and Undergraduate level as well. by the start date of the record. We now create a
+When we query the database, we currently get back a database table for each month, basically appending
+linked list of database rows. This is due to our current YY MM onto the table name. At collection time.
+use of our RSQL" interface to Oracle. When process- insertions are easy; you just take the connect time and
+ing the selected data, each row is in turned loaded into generate the table name. Session terminations are a bit
+a mesh data element, and passed along for processing trickier, as a long session may have started in the pre-
+into the mesh. Although this does increase memory vious month, or even earlier. We therefore currently
+usage, keeping the original query results in memory look back two months for a session start record.
+allows for very fast processing when changing demo- The change for the analysis program was also
+graphic choices — all of the data is already extracted moderate sin le. Instead oF . ’ skin the date
+from the database. This is a big improvement over the y simple. Ju s . -
+old program, by caching all of the raw data and demo- range and returning a table name, we return a list of
+graphic information, we can readily play with the data pre intum weaning saat Process then queries each
+and try different types of analysis without much of the These are then rocessed into the mesh in turn. The
+delay we used to have. Processed’ :
+. _. only challenge remaining is to be sure to have the new
+Since this is one of the few places that we actu- tables created ahead of time so there is a place to
+ally interact with the database, this routine provides a receive new data.
+it I to chi the database API. While th ae :
+RSOL is ereat for steal queries, vou do pay a perfor. In addition, we also had started systematic back-
+mance penalty for larger queries. One area for future BBS of the Stimon database [2, 3 I becited up The fae
+k is t lace this with a PRO*C’S interface t ae " ran
+wlow block transfers of data, This can result in much cle database maintains a record of all transactions
+better data transfer rates from the database. since the last full backup. These transaction files mul-
+. a tiplied quickly with the log collection, requiring more
+If time-of-day processing is enabled, each mesh frequent full backups, and a lot more free disk space
+element also gets a pointer to an array of buckets, rep- on the database machine to hold transaction files
+resenting a time-line. This will hold session duration between backups.
+information that can later be extracted to produce the The Simon database is used to manage all of our
+concurrent usage graphs shown earlier. I did not spend UNIX accounts, disk accounting, and many other
+ti ith changing the bucket size, alth this meen . ° .
+a d prove meaningful later on ct size, although this aspects of our operation. Since the operational need
+. for the WTMP and license server data was much less
+Space, the Final Frontier than the rest of the Simon data, we decided to move
+. . . the WTMP data into a different database instance that
+In the original WTMP logging project, all was not being backed up. This removed the load on
+WIMP records were stored in a single table. While the backup system, while still allowing us to back up
+this worked at first, after a year or so, this ever-grow- the mission critical Simon data.
+ing table was come more dificult to att thig Although the log record tables could continue to
+Duri system ades, v have t t this oe . .
+eee SYS er IP STAs We WOU NS POTS grow in size, in practice, we have not always reloaded
+T2we developed a layer that runs on top of the Oracle Call the older ta wher movin the fatabase petween
+Interface that simplifies writing applications that need to in- machines. Also, as the data ages, the problems wi
+terface with Oracle, it handles network authentication, space demographics get worse.
+management and many other details of coding with Oracle.
+13PRO*C is the Oracle pre-compiler for embedding SQL
+queries (and other calls to the database) directly in a C pro-
+gram.
+[Sum |_| -BOC_[ MAS [SR]
+[|_| Cat Value | 540331 | 54698 | 53852
+46870" | 460354
+188011 | 79977 | 54698 | 53336
+Table 3: Data Explorer use by School and Class.
+24 1997 LISA XI — October 26-31, 1997 — San Diego, CA
+
+===== PAGE 10 =====
+Finke Monitoring Application Use with License Server Logs
+Findings and Losses databases, or even flat files could be used in place of
+Although we had continued to collect WTMP the connections to Simon.
+data, until the license server collection project had Xess is a commercial spreadsheet product avail-
+started to heat up, no one had really spent much time able for many UNIX platforms and WindowsNT.
+doing analysis of the WTMP data. When we started More information on Xess can be obtained from:
+planning for some workstation lab upgrades, we went Applied Information Systems, Inc.
+to generate some nice reports with the new tools and 100 Europa Drive Chapel Hill, NC 27514 USA
+discovered that as a result of an OS upgrade, we did 1-919-942-7801
+not have accurate termination information for most of 1-800-334-5510
+our public workstations labs. As a fallback position, 1-919-493-7563 FAX
+we did some analysis on just the session start times info@ais.com.
+and we were able to draw some conclusions on work- http://www.ais.com
+station usage. Acknowledgments
+Despite the problems with the workstation usage Many thanks to Adam S. Moskowitz and Debra
+statistics, we were able to use them in some decision Wentorf for their help in editing several drafts of this
+making process. In addition, the very concrete benefits paper (although I still take full responsibility for all
+from the license server analysis has brought a good misplaced commas and poor grammar) and also to
+deal of attention and support to the statistic collection Jackie Blendell for her help with the original abstract.
+and analysis project. Additional staff have been Thanks also to my manager, Kathy Bursese, who
+assigned to work with the system on an ongoing basis, encouraged preparation and submission of the paper.
+and session data collection will be integrated into our
+existing session management software. Author Information
+The information collected allowed us to measure Jon Finke graduated from Rensselaer in 1983,
+the actual usage of a number of our licensed applica- where he had provided microcomputer support and
+tions, and in some cases, we could reduce the number communications programming, with a BS-ECSE. He
+of copies licensed, resulting in significant savings in continued as a full time staff member in the computer
+license fees. This savings should help maintain inter- center. From PC communications, he moved into
+est and support for the project. We also need to find mainframe communications and networking, and then
+ways to measure the usage of applications that do not on to Unix support, including a stint in the Nysernet
+use this type of license server. Network Information Center. A charter member of the
+This actually opens up other questions about Workstation Support Group he took over printing
+measuring application usage. Given that this project development and support and later inherited the Simon
+grew out of measuring workstation use, essentially project, which has been his primary focus for the past
+seat time, most of the information has a bias to session six years. He is currently a Senior Systems Program-
+duration. This makes a lot of sense for an interactive mer in the Server Support Services department at
+program such as autocad, but makes less sense for an Rensselaer, where he continues integrating Simon
+application that might remain open but unused for with the rest of the Institute information systems, and
+most of a session such as a mail reader. Recording ses- also deals with information security concerns. Reach
+sion duration is just about meaningless for applica- him via USMail at RPI; VCC 319; 110 8th St; Troy,
+tions such as compilers and text processors; the fact NY 12180-3590. Reach him electronically at
+that someone spends a lot of time running latex may finkej@rpi.edu. Find out more via http://www.rpi.edu/
+be more a reflection on the speed of their machine and finkej.
+not on the type of work they are doing. Bibliography
+References and Availability [1] Applied Information Systems Inc, Chapel Hill,
+All source code for the Simon system is avail- NC. Xess Connections API Toolkit Guide — Ver-
+able for anonymous FTP. See ftp://ftp.rpi. sion 3.1, 1996. http://www.ais.com.
+edu/pub/its-release/simon/README.simon [2] Jon Finke. Automated userid management. In
+for details. In addition, all of the Oracle table defini- Proceedings of Community Workshop "92, Troy,
+tions are available at http: //www.rpi.edu/ NY, June 1992. Rensselear Polytechnic Institute.
+campus/rpi/simon/misc/Tables/simon. Paper 3-5.
+Index. html. [3] Jon Finke. Relational database + automated
+Although this system benefits from being able to sysadmin = simon. Boston, MA, July 1993. Sun
+extract demozraphic, information from simon, and Users Group. Invited Talk for SUG-East 93. .
+from actually storing the raw data in the database, [4] Jon Finke. Monitoring usage of workstations
+both of these areas are pretty well isolated, so other with a relational database. In USENIX Systems
+Administration (LISA VIII) Conference Proceed-
+ings, pages 149-158. Rensselear Polytechnic
+1997 LISA XI — October 26-31, 1997 — San Diego, CA 25
+
+===== PAGE 11 =====
+Monitoring Application Use with License Server Logs Finke
+Institute, USENIX, September 1994. San Diego,
+CA.
+[5] James S. Plank. Jgraph — a filter for plotting
+graphs in postscript. In USENIX Technical Con-
+ference Proceedings, pages 61-66. Princeton
+University, USENIX, January 1993. San Diego,
+CA.
+26 1997 LISA XI — October 26-31, 1997 — San Diego, CA

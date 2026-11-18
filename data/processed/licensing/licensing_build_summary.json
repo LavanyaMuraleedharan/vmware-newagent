@@ -1,0 +1,27 @@
+{
+  "domain": "Licensing",
+  "research_documents_processed": 2,
+  "knowledge_documents_created": 45,
+  "extraction": [
+    {
+      "source_file": "license1.pdf",
+      "total_pages": 11,
+      "pages_with_text": 11,
+      "extracted_text_file": "data\\processed\\licensing\\research_text\\license1_extracted.txt"
+    },
+    {
+      "source_file": "license2.pdf",
+      "total_pages": 34,
+      "pages_with_text": 34,
+      "extracted_text_file": "data\\processed\\licensing\\research_text\\license2_extracted.txt"
+    }
+  ],
+  "outputs": [
+    "data\\processed\\licensing\\licensing_research_knowledge.jsonl",
+    "data\\processed\\licensing\\licensing_data_dictionary.json",
+    "data\\processed\\licensing\\license_inventory_template.csv",
+    "data\\processed\\licensing\\license_events_template.csv",
+    "data\\processed\\licensing\\license_cost_reference_template.csv"
+  ],
+  "note": "CSV files contain headers only. No enterprise license records or costs were fabricated."
+}

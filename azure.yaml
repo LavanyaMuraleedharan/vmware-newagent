@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+infra:
+    provider: microsoft.foundry
+name: vmware-costoptimization-agent
+services:
+    lavamdn04-2479:
+        endpoint: https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479
+        host: azure.ai.project
+    vmware-agent:
+        codeConfiguration:
+            dependencyResolution: remote_build
+            entryPoint: main.py
+            runtime: python_3_13
+        container:
+            resources:
+                cpu: "0.5"
+                memory: 1Gi
+        env:
+            AZURE_AI_MODEL_DEPLOYMENT_NAME: ${AZURE_AI_MODEL_DEPLOYMENT_NAME}
+        host: azure.ai.agent
+        kind: hosted
+        language: python
+        name: vmware-agent
+        project: .
+        protocols:
+            - protocol: responses
+              version: 2.0.0
+        uses:
+            - lavamdn04-2479

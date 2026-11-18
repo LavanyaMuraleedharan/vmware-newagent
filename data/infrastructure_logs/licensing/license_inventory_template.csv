@@ -1,0 +1,21 @@
+﻿license_id,software_feature,software_product,publisher,version,license_metric,entitled_quantity,installed_quantity,assigned_quantity,contract_start_date,contract_end_date,renewal_date,support_maintenance_cost,currency,cost_period,business_owner,department,source_system,record_timestamp
+SIM-LIC-001,CAD_Pro,DesignSuite,Publisher-A,2.2,named_user,40,34,34,2025-08-19,2027-05-15,2027-02-16,276262.34,INR,annual,owner_01,Engineering,synthetic_license_inventory,2026-11-16T23:59:00
+SIM-LIC-002,CAD_Render,DesignSuite,Publisher-A,1.0,concurrent,25,29,21,2025-08-19,2027-05-15,2027-04-03,40105.12,INR,annual,owner_02,Engineering,synthetic_license_inventory,2026-11-16T23:59:00
+SIM-LIC-003,SIM_Core,SimuWorks,Publisher-B,2.8,concurrent,30,30,22,2025-08-19,2027-05-15,2027-05-08,173290.54,INR,annual,owner_03,IT Operations,synthetic_license_inventory,2026-11-16T23:59:00
+SIM-LIC-004,SIM_Advanced,SimuWorks,Publisher-B,2.6,concurrent,18,22,13,2025-08-19,2027-05-15,2026-12-17,56760.2,INR,annual,owner_04,Research,synthetic_license_inventory,2026-11-16T23:59:00
+SIM-LIC-005,MATLAB_Base,NumeriLab,Publisher-C,1.1,concurrent,50,44,38,2025-08-19,2027-05-15,2027-03-12,432671.31,INR,annual,owner_05,IT Operations,synthetic_license_inventory,2026-11-16T23:59:00
+SIM-LIC-006,MATLAB_Toolbox,NumeriLab,Publisher-C,4.8,concurrent,35,36,25,2025-08-19,2027-05-15,2026-12-27,202656.32,INR,annual,owner_06,Engineering,synthetic_license_inventory,2026-11-16T23:59:00
+SIM-LIC-007,CAE_Solver,EngiSoft,Publisher-D,5.5,concurrent,22,26,20,2025-08-19,2027-05-15,2027-03-01,33842.2,INR,annual,owner_07,Data,synthetic_license_inventory,2026-11-16T23:59:00
+SIM-LIC-008,CAE_PrePost,EngiSoft,Publisher-D,3.1,concurrent,28,21,20,2025-08-19,2027-05-15,2027-02-12,35592.98,INR,annual,owner_08,Product,synthetic_license_inventory,2026-11-16T23:59:00
+SIM-LIC-009,PCB_Design,CircuitPro,Publisher-E,2.5,concurrent,20,24,18,2025-08-19,2027-05-15,2027-03-19,63031.72,INR,annual,owner_09,Research,synthetic_license_inventory,2026-11-16T23:59:00
+SIM-LIC-010,PCB_Sim,CircuitPro,Publisher-E,5.2,concurrent,16,16,12,2025-08-19,2027-05-15,2027-01-03,105355.9,INR,annual,owner_10,Data,synthetic_license_inventory,2026-11-16T23:59:00
+SIM-LIC-011,DataViz_Pro,VizWorks,Publisher-F,5.3,named_user,35,32,30,2025-08-19,2027-05-15,2027-02-23,162550.77,INR,annual,owner_11,Research,synthetic_license_inventory,2026-11-16T23:59:00
+SIM-LIC-012,DataViz_Advanced,VizWorks,Publisher-F,3.6,concurrent,15,13,13,2025-08-19,2027-05-15,2026-12-24,41329.33,INR,annual,owner_12,Research,synthetic_license_inventory,2026-11-16T23:59:00
+SIM-LIC-013,Dev_IDE,CodeForge,Publisher-G,2.7,named_user,60,60,42,2025-08-19,2027-05-15,2027-03-06,479914.63,INR,annual,owner_13,IT Operations,synthetic_license_inventory,2026-11-16T23:59:00
+SIM-LIC-014,Dev_Test,CodeForge,Publisher-G,2.8,concurrent,24,29,22,2025-08-19,2027-05-15,2027-01-20,49374.23,INR,annual,owner_14,Data,synthetic_license_inventory,2026-11-16T23:59:00
+SIM-LIC-015,GIS_Desktop,GeoSuite,Publisher-H,4.5,concurrent,18,22,13,2025-08-19,2027-05-15,2027-05-14,78665.64,INR,annual,owner_15,Product,synthetic_license_inventory,2026-11-16T23:59:00
+SIM-LIC-016,GIS_Analysis,GeoSuite,Publisher-H,1.1,concurrent,12,12,11,2025-08-19,2027-05-15,2027-01-08,60325.95,INR,annual,owner_16,Product,synthetic_license_inventory,2026-11-16T23:59:00
+SIM-LIC-017,Media_Edit,MediaLab,Publisher-I,4.9,named_user,25,27,21,2025-08-19,2027-05-15,2027-03-24,143272.85,INR,annual,owner_17,IT Operations,synthetic_license_inventory,2026-11-16T23:59:00
+SIM-LIC-018,Media_Render,MediaLab,Publisher-I,1.8,concurrent,14,19,11,2025-08-19,2027-05-15,2026-12-18,110212.43,INR,annual,owner_18,Research,synthetic_license_inventory,2026-11-16T23:59:00
+SIM-LIC-019,DB_Admin,DataAdmin,Publisher-J,2.7,concurrent,32,33,28,2025-08-19,2027-05-15,2027-04-06,57714.34,INR,annual,owner_19,Engineering,synthetic_license_inventory,2026-11-16T23:59:00
+SIM-LIC-020,DB_Performance,DataAdmin,Publisher-J,5.1,concurrent,20,22,18,2025-08-19,2027-05-15,2027-01-30,175445.86,INR,annual,owner_20,Research,synthetic_license_inventory,2026-11-16T23:59:00

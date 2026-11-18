@@ -1,0 +1,12 @@
+.venv/
+.venv_old/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.git/
+*.pyc
+
+data/gwa_t_12_fastStorage/
+data/infrastructure_logs/compute_gpu/gpu_utilization_metrics.csv
+data/asi_opensource_server_hourly/
+data/dataset/

@@ -1,0 +1,248 @@
+
+{
+  "currency": "USD",
+  "cost_model_version": "1.1",
+  "model_type": "synthetic_calibrated",
+  "cost_period": "annual",
+  "domains": {
+    "vmware": {
+      "components": [
+        "server_hardware_amortization",
+        "vmware_software_licensing",
+        "maintenance",
+        "power",
+        "cooling"
+      ],
+      "rates": {
+        "server_hardware_amortization": {
+          "rate": null,
+          "unit": "server",
+          "billing_period": "annual",
+          "calculation_method": "hardware_amortization"
+        },
+        "vmware_software_licensing": {
+          "rate": null,
+          "unit": "licensed_core",
+          "billing_period": "annual",
+          "calculation_method": "quantity_times_rate"
+        },
+        "maintenance": {
+          "rate": null,
+          "unit": "server",
+          "billing_period": "annual",
+          "calculation_method": "quantity_times_rate"
+        },
+        "power": {
+          "rate": null,
+          "unit": "kWh",
+          "billing_period": "annual",
+          "calculation_method": "quantity_times_rate"
+        },
+        "cooling": {
+          "rate": null,
+          "unit": "kWh",
+          "billing_period": "annual",
+          "calculation_method": "pue_overhead"
+        }
+      }
+    },
+    "storage": {
+      "components": [
+        "storage_hardware_amortization",
+        "maintenance",
+        "power",
+        "cooling",
+        "rack_space"
+      ],
+      "rates": {
+        "storage_hardware_amortization": {
+          "rate": null,
+          "unit": "usable_TB",
+          "billing_period": "annual",
+          "calculation_method": "hardware_amortization"
+        },
+        "maintenance": {
+          "rate": null,
+          "unit": "storage_array",
+          "billing_period": "annual",
+          "calculation_method": "quantity_times_rate"
+        },
+        "power": {
+          "rate": null,
+          "unit": "kWh",
+          "billing_period": "annual",
+          "calculation_method": "quantity_times_rate"
+        },
+        "cooling": {
+          "rate": null,
+          "unit": "kWh",
+          "billing_period": "annual",
+          "calculation_method": "pue_overhead"
+        },
+        "rack_space": {
+          "rate": null,
+          "unit": "rack_unit",
+          "billing_period": "annual",
+          "calculation_method": "quantity_times_rate"
+        }
+      }
+    },
+    "backup": {
+      "components": [
+        "backup_hardware_amortization",
+        "backup_software_licensing",
+        "maintenance",
+        "power",
+        "storage_retention"
+      ],
+      "rates": {
+        "backup_hardware_amortization": {
+          "rate": null,
+          "unit": "backup_server",
+          "billing_period": "annual",
+          "calculation_method": "hardware_amortization"
+        },
+        "backup_software_licensing": {
+          "rate": null,
+          "unit": "protected_TB",
+          "billing_period": "annual",
+          "calculation_method": "quantity_times_rate"
+        },
+        "maintenance": {
+          "rate": null,
+          "unit": "backup_server",
+          "billing_period": "annual",
+          "calculation_method": "quantity_times_rate"
+        },
+        "power": {
+          "rate": null,
+          "unit": "kWh",
+          "billing_period": "annual",
+          "calculation_method": "quantity_times_rate"
+        },
+        "storage_retention": {
+          "rate": null,
+          "unit": "retained_TB_month",
+          "billing_period": "annual",
+          "calculation_method": "quantity_times_rate"
+        }
+      }
+    },
+    "compute_gpu": {
+      "components": [
+        "server_hardware_amortization",
+        "gpu_hardware_amortization",
+        "power",
+        "cooling",
+        "maintenance"
+      ],
+      "rates": {
+        "server_hardware_amortization": {
+          "rate": null,
+          "unit": "server",
+          "billing_period": "annual",
+          "calculation_method": "hardware_amortization"
+        },
+        "gpu_hardware_amortization": {
+          "rate": null,
+          "unit": "GPU",
+          "billing_period": "annual",
+          "calculation_method": "hardware_amortization"
+        },
+        "power": {
+          "rate": null,
+          "unit": "kWh",
+          "billing_period": "annual",
+          "calculation_method": "quantity_times_rate"
+        },
+        "cooling": {
+          "rate": null,
+          "unit": "kWh",
+          "billing_period": "annual",
+          "calculation_method": "pue_overhead"
+        },
+        "maintenance": {
+          "rate": null,
+          "unit": "server",
+          "billing_period": "annual",
+          "calculation_method": "quantity_times_rate"
+        }
+      }
+    },
+    "database": {
+      "components": [
+        "database_software_licensing",
+        "compute_allocation",
+        "storage_allocation",
+        "maintenance"
+      ],
+      "rates": {
+        "database_software_licensing": {
+          "rate": null,
+          "unit": "licensed_core",
+          "billing_period": "annual",
+          "calculation_method": "quantity_times_rate"
+        },
+        "compute_allocation": {
+          "rate": null,
+          "unit": "vCPU",
+          "billing_period": "annual",
+          "calculation_method": "quantity_times_rate"
+        },
+        "storage_allocation": {
+          "rate": null,
+          "unit": "usable_TB",
+          "billing_period": "annual",
+          "calculation_method": "quantity_times_rate"
+        },
+        "maintenance": {
+          "rate": null,
+          "unit": "database_instance",
+          "billing_period": "annual",
+          "calculation_method": "quantity_times_rate"
+        }
+      }
+    },
+    "licensing": {
+      "components": [
+        "named_user_license",
+        "concurrent_license",
+        "core_license",
+        "subscription_license"
+      ],
+      "rates": {
+        "named_user_license": {
+          "rate": null,
+          "unit": "named_user",
+          "billing_period": "annual",
+          "calculation_method": "quantity_times_rate"
+        },
+        "concurrent_license": {
+          "rate": null,
+          "unit": "concurrent_license",
+          "billing_period": "annual",
+          "calculation_method": "quantity_times_rate"
+        },
+        "core_license": {
+          "rate": null,
+          "unit": "licensed_core",
+          "billing_period": "annual",
+          "calculation_method": "quantity_times_rate"
+        },
+        "subscription_license": {
+          "rate": null,
+          "unit": "subscription",
+          "billing_period": "annual",
+          "calculation_method": "quantity_times_rate"
+        }
+      }
+    }
+  },
+  "rate_metadata": {
+    "source": null,
+    "source_type": "reference_or_demo_assumption",
+    "assumption_status": "pending_validation",
+    "actual_enterprise_pricing": false,
+    "validity_period": null
+  }
+}

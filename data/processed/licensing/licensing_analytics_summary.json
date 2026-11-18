@@ -1,0 +1,34 @@
+{
+    "domain": "Licensing",
+    "data_origin": "simulated",
+    "observation_start": "2026-08-19T00:00:00",
+    "observation_end": "2026-11-16T23:59:00",
+    "observation_days": 90.0,
+    "total_event_records": 53962,
+    "inventory_records": 20,
+    "cost_reference_records": 20,
+    "event_type_counts": {
+        "OUT": 26977,
+        "IN": 26977,
+        "DENIED": 8
+    },
+    "valid_sessions": 26977,
+    "invalid_sessions": 0,
+    "denied_requests": 8,
+    "software_features_analyzed": 20,
+    "concurrent_features_analyzed": 16,
+    "named_user_features_requiring_activity_review": 4,
+    "reclaim_candidate_features": 9,
+    "high_utilization_or_capacity_pressure_features": 4,
+    "potential_reclaim_candidate_quantity": 151,
+    "estimated_annual_financial_impact": 3915533.15,
+    "currency": "INR",
+    "financial_estimate_note": "Illustrative estimate based on simulated annual unit costs and qualifying low-utilization concurrent-license candidates. Not actual savings or a confirmed contractual reduction. Requires contract, business and procurement approval.",
+    "reclaim_eligibility": {
+        "license_metric": "concurrent",
+        "peak_utilization_below_pct": 70.0,
+        "average_utilization_below_pct": 60.0,
+        "denied_requests_required": 0
+    },
+    "named_user_note": "Named-user utilization is not calculated from concurrent checkout events. Assignment and actual user activity data are required."
+}

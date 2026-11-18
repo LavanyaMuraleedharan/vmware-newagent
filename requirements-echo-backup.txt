@@ -1,0 +1,4 @@
+azure-ai-agentserver-responses==2.4.0
+pandas==2.3.3
+python-dotenv==1.2.4
+mcp==1.30.0

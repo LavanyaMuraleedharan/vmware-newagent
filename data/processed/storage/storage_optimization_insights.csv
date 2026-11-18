@@ -1,0 +1,5 @@
+workload,best_iops_device,best_iops_raid,best_iops,lowest_latency_device,lowest_latency_raid,lowest_latency,highest_latency_device,highest_latency_raid,highest_latency
+random_read,nvme,4+1,146522.88782178218,nvme,4+1,814791.9107148515,nvme,1+1,1200533.3642651583
+random_write,nvme,4+1,115071.73221122113,nvme,4+1,1195175.9629486802,nvme,4+1,1841655.125716832
+sequential_read,hdd,4+2,5341.737121212122,hdd,4+2,40698794.396340914,hdd,1+1,120393393.09276135
+sequential_write,nvme,8+2,22958.69477675361,nvme,4+1,11414128.889263423,hdd,2+2,265554147.51232556

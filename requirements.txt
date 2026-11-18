@@ -1,0 +1,9 @@
+azure-ai-agentserver-responses==2.4.0
+mcp==1.30.0
+python-dotenv==1.2.4
+pandas==2.3.3
+numpy==2.4.6
+openai==3.51.0
+Pillow==13.0.0
+PyMuPDF==2.1
+pytesseract==0.3.13

@@ -1,0 +1,33 @@
+{
+    "domain": "VMware",
+    "records_analyzed": 1250,
+    "recommendation_counts": {
+        "Review resource right-sizing opportunity": 674,
+        "Review individual resource allocation": 231,
+        "Investigate CPU and memory capacity": 148,
+        "Investigate CPU capacity and workload peaks": 127,
+        "Investigate memory capacity and pressure": 35,
+        "Continue monitoring workload patterns": 33,
+        "Collect additional monitoring data": 2
+    },
+    "priority_counts": {
+        "Medium": 905,
+        "High": 310,
+        "Low": 33,
+        "Undetermined": 2
+    },
+    "risk_counts": {
+        "Medium": 905,
+        "High": 310,
+        "Low": 33,
+        "Unknown": 2
+    },
+    "financial_calculation": "Pending common Cost Agent cost model",
+    "limitations": [
+        "No confirmed VM identifiers in source dataset",
+        "Historical benchmark measurements, not live infrastructure",
+        "Recommendations require operational validation",
+        "No actual financial cost or savings calculated"
+    ],
+    "output_file": "C:\\Users\\vasundra sri\\Desktop\\AI_AGENT\\data\\processed\\vmware\\vmware_optimization_recommendations.csv"
+}

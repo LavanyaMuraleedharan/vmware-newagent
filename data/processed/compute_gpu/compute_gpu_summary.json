@@ -1,0 +1,26 @@
+{
+    "domain": "Compute/GPU",
+    "files_discovered": 121,
+    "files_processed": 121,
+    "files_failed": 0,
+    "total_records": 3434464,
+    "valid_records": 3434464,
+    "invalid_records": 0,
+    "unique_servers": 29320,
+    "unique_clusters": 12,
+    "total_gpu_count_across_records": 13768931.0,
+    "maximum_cpu_capacity_cores_observed": 224.0,
+    "data_origin": "reference_dataset",
+    "limitations": [
+        "Dataset contains capacity and inventory fields.",
+        "Actual CPU and GPU utilization is not established.",
+        "Actual infrastructure costs are not provided.",
+        "Repeated server observations are aggregated.",
+        "Maximum observed capacity is not necessarily current capacity."
+    ],
+    "outputs": {
+        "file_metrics": "C:\\Users\\vasundra sri\\Desktop\\AI_AGENT\\data\\processed\\compute_gpu\\compute_gpu_file_metrics.csv",
+        "server_metrics": "C:\\Users\\vasundra sri\\Desktop\\AI_AGENT\\data\\processed\\compute_gpu\\compute_gpu_server_metrics.csv",
+        "errors": "C:\\Users\\vasundra sri\\Desktop\\AI_AGENT\\data\\processed\\compute_gpu\\compute_gpu_ingestion_errors.csv"
+    }
+}

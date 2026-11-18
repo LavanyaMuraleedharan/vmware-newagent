@@ -1,0 +1,1182 @@
+===== PAGE 1 =====
+Extracting License Usage
+Using Flexlm Logs
+A Project Report
+submitted by
+KALYAN KUMAR V, EE14B065
+in partial fulfilment of requirements
+for the award of the degree of
+BACHELOR OF TECHNOLOGY
+OF TEC,
+ky RON
+= as =
+z\ CAS /s
+Oa 78
+Raa ae
+DEPARTMENT OF Electrical Engineering
+INDIAN INSTITUTE OF TECHNOLOGY MADRAS
+MAY 2018
+
+===== PAGE 2 =====
+THESIS CERTIFICATE
+This is to certify that the thesis titled Extracting License Usage Using Flexlm Logs, submitted
+by Kalyan kumar V, EE14B065, to the Indian Institute of Technology Madras, for the award of
+the degree of Bachelor of Technology, is a bona fide record of the research work done by him
+under our supervision. The contents of this thesis, in full or in parts, have not been submitted to
+any other Institute or University for the award of any degree or diploma.
+Prof. Harishankar Ramachandran
+Project Guide
+Professor
+Dept. of Electrical Engineering
+IIT Madras, 600036
+Place: Chennai
+Date: 25 May 2018
+
+===== PAGE 3 =====
+ACKNOWLEDGEMENTS
+
+This work would not have been possible without the guidance and the help of several people. I
+take this opportunity to extend my sincere gratitude to all those who made this thesis possible.
+First, I would like to thank all my teachers who bestowed me with good academic knowledge.
+lam indebted to my advisor Prof. Harishankar Ramachandran whose expertise, generous guid-
+ance and support made it possible for me to work on a topic that was of great interest to me. I
+would also like to thank Mrs. Gayathri P from CC Staff, ITM for helping me to understand the
+problem and arrive at a solution. I would like to thank my family for providing valuable support
+and motivation throughout my life. I would also like to thank all my friends and well-wishers
+for helping me during hard times and supporting me.
+
+===== PAGE 4 =====
+ABSTRACT
+
+KEYWORDS:  FlexNet, FLEXIm, licenses, Pay-per-use, Log files, Python
+
+FlexNet Publisher(1) (formerly known as FLEXIm) is a software license manager from Flexera
+Software which implements license management. Currently FLEXIm is being used to imple-
+ment license management at IIT Madras for various softwares such as Ansys, Abaqus, Matlab
+and Comsol. The licenses are allocated dynamically to machines, a license being checked-out
+when a user begins using the software on any given machine and checked-in when the user
+finishes using the software. In this way, we can support the user community of hundreds with
+limited number of licenses. Currently we can’t track the usage of individual users and which
+departments they belong to. In order to implement pay-per-use policy for license usage, we
+need to find a way to find these statistics. This project showcases a Python based code design
+and implementation through which we extract the cost incurred to each user, each guide and
+each department, by using FLEXIm log files.
+
+===== PAGE 5 =====
+TABLE OF CONTENTS
+ACKNOWLEDGEMENTS i
+ABSTRACT ii
+LIST OF FIGURES iv
+LIST OF CODE SEGMENTS v
+1 Introduction 1
+2 Background 2
+3 Code Design 3
+4 Results 17
+4.2 Plots... 2... ee 20
+5 Conclusions 25
+5.1 Observations .. 2... 2... ee 25
+5.2 Future Directions .. 2... ee ee 25
+5.3 Securities... 2... ee 26
+
+===== PAGE 6 =====
+LIST OF FIGURES
+4.1 Department wise Ansys licenses issued ...........0..0.0000- 17
+4.2 Department wise Ansys usage inseconds ..............0.00- 17
+4.3 Top 20 Ansysusers .. 2... ee 18
+4.4 Top 10 Ansys users of mechanical dept... ...........0..0000- 18
+4.5 Professor wise Ansys usage in seconds. ...............-00004 19
+4.6 Department wise Ansys licenses issued .............--.0004 20
+4.7 Department wise Ansys usage in minutes ..............0.00- 20
+4.8 Department wise Comsol licenses issued... 2.2... 0.002.020.0004 21
+4.9 Department wise Comsol usage in minutes... .............00- 21
+4.10 Department wise Abaqus licenses issued... ............-00-.% 22
+4.11 Department wise Abaqus usage in minutes... .............0-- 22
+4.12 Department wise Matlab licenses issued .. 2... 2... 0. ee  ee 23
+4.13 Department wise Matlab usage in minutes ................0.-. 23
+4.14 Department wise Matlab usage in minutes... 2... ........00.-.% 24
+
+===== PAGE 7 =====
+Listings
+3.1 Importing libraries and Opening files... .............2..00. 3
+3.2 Defining parameters... 2... 2. ee ee 4
+3.3. Searching for OUT’s using RegEx .. 2.2... ee ee 5
+3.4 Updating user license usage and time stamps of OUT’s ............ 6
+3.5 Searching for guide name using user-prof file ................0. 7
+3.6 Updating profusage of corresponding guides... ............000. 8
+3.7 Searching for user names in institute id format... ...........-0. 8
+3.8 Searching for dept name using host name from dept-host fille ......... 9
+3.9 Updating outs and depusage of corresponding departments .......... 10
+3.10 Searching for IN’s using RegEX 2.2... ee ee 11
+3.11 Updating user license usage and time stamps of IN’s 2... ......0.0. 11
+3.12 Searching for user names in institute id format... ...........2.0. 12
+3.13 Searching for dept name using host name from dept-host fille ......... 13
+3.14 Printing outs and license usage of allusers.............-2.004.- 13
+3.15 Printing license usage under each professor ...........-.-0004 14
+3.16 Printing license usage of departments and top 20 users overall ........ 14
+3.17 Printing top 10 users of any department ...............-.04. 15
+3.18 Plottingtheresults 2... . 0.0.0.0... 000000000000 00 004 15
+
+===== PAGE 8 =====
+CHAPTER 1
+
+Introduction
+FLEX!Im also known as FlexNet Publisher is a software license manager from Flexera Software
+which implements license management and is intended to be used in corporate environments
+to provide floating licenses to multiple end users of computer software. Computer software
+can be licensed in a variety of ways. A license to use a piece of software may be associated
+with a specific machine (node-locked), permitting it to only run on that machine (node in a
+network); alternatively, a company or an organization may buy a pool of floating licenses and
+these licenses may be allocated dynamically to machines, a license being checked-out when
+a user begins using the software on any given machine and checked-in when the user finishes
+using the software. In this way, for example, a company might buy a pool of 100 licenses but
+support a user community of hundreds of occasional users of the software (so long as no more
+than 100 users ever want to use the software simultaneously).
+
+FLEXIm software(2) is a license management solution that allows software vendors to limit
+the number of software seats available to their users. FLEXIm supports different licensing
+policies such as Floating (aka Concurrent) and Node Locked licenses. These type of software
+systems are also called DRM Solutions (Digital Rights Management). Other software with the
+same functionality are SafeNet HASP, SafeNet RMS and IBM LUM. FLEXIm is used by a
+great variety of software vendors, such as ESRI, Autodesk, Mathworks, PTC, Ansys, Cadence
+and more. Here at IITM, we use floating or node-locked license policy for license management.
+We intend to implement pay-per-use policy for license usage but we don’t have any means to
+track license usage statistically. We can extract usage data and statistics from log files using the
+code developed in this project.
+
+===== PAGE 9 =====
+CHAPTER 2
+
+Background
+The Imadmin daemon or License server manager receives the license request from the applica-
+tion and passes it to the vendor daemon. Vendor daemon is created by the admin and is unique
+to each FLEXIm enabled application installed on the network. It’s job is to process the license
+request and grant/deny it based on number of licenses available and pre-defined license usage
+constraints. License file holds detailed license information such as the quantity and time extent
+of the license. The main focus of this project is on the Debug or Report logs. These are written
+by the license server manager(Imadmin), typically accounting license check-outs, check-ins and
+license denials.
+
+12:18:15 (MLM) OUT: "MATLAB" ee16m084@ams112 (4 licenses)
+
+Each line of the log files looks like the above line. The first part in hh:mm:ss format is the
+time stamp. The OUT” represents that the license is issued by the server to the user. *IN’ is
+displayed if the license is taken back from the user. DENIED” is displayed if the maximum
+number of licenses is reached. MATLAB is shown because the issued license is of MATLAB
+software. *ee16m084’ is the user name and ’ams112’ is the host name that are registered on
+the license server. The number of licenses issued/taken is shown in the brackets and nothing is
+displayed if just one license is used.
+
+We intend to design and implement a python based code that can parse through the log file
+and extract usage data of users and departments at IITM. As the log files have a standard format
+and doesn’t differ much with applications, same code with some changes should work with
+logs of any other application/software registered on the license server. We also use an excel
+sheet that has department details of each host names, to get the department wise licenses issued
+and cumulative usage. We can find the number of licenses issued to each user and for each
+department, cumulative license usage of each user, each guide and for each department. With
+these statistics, one can formulate a pricing model based on pay-per-price policy at the interest
+of the institute.
+
+===== PAGE 10 =====
+CHAPTER 3
+
+Code Design
+The aim is to design a python based code to find license usage from FLEXIm logs. In this
+code, five things are computed parallelly: Total number of licenses issued to each user, Total
+number of licenses issued under each department, Cumulative license time usage of each user,
+Cumulative license time usage of each department and Cumulative license time usage under
+each guide. The structure and implementation of the code is explained below.
+
+This part imports the required libraries and defines main function. matplotlib library is used
+to plot various graphs and datetime library is used to deal with time stamps of log files. In
+main function, lines, liness and linesss are three string arrays used to read lines of log file and
+department-host excel sheet and user-professor excel sheets respectively. These three files are
+passed as arguments to the main code. Error is printed in case of any IOError.
+
+Listing 3.1: Importing libraries and Opening files
+
+1 import sys
+
+2 import re
+
+3 import matplotlib.pyplot as plt #import required libraries
+4 import datetime as dt
+
+5
+
+6 def main():
+
+7 lines = []
+
+8 liness = []
+
+9 try:
+10 with open (sys.argv[1], "r") as file:
+Ul lines=file.readlines()
+12 #to read each line of log file
+13 with open (sys.argv[2], "r") as filee:
+14 liness = filee.readlines()
+15 #to read each line of dept-host excel sheet
+16 with open (sys.argv[3], "r") as fileee:
+17 linesss = fileee.readlines()
+
+===== PAGE 11 =====
+18 #to read each line of user-prof excel sheet
+19 except I0Error as e:
+20 print e
+21 print "Usage: %s logfile" % sys.argv[0]
+22 #Print if I0Error
+23 return 1
+In this part, all the parameters required are defined. ’users’, ’features’ and “hosts” sets
+contain list of user names, softwares and host names respectively. ’outs’ dictionary refers to no.
+of licenses issued from each department. ’li’ dictionary refers to no. of licenses with each user.
+“usage’, ’depusage’ and ’profusage’ dictionaries refer to cumulative license usage of each user,
+each department and each guide respectively.
+Listing 3.2: Defining parameters
+1 hosts = set() #set of all hosts
+2 users = set() #set of all users
+3 features = set() #set of all features
+4 outs = dict() #dict of no. of licenses issued from each ~
+dept
+5 li = dict() #dict of no. of licenses with each user
+6 time1 = dict() #dict of current time stamps of each user
+7 time2 = dict() #dict of previous time stamps of each user
+8 usage = dict() #dict of cumulative license usage of each <—
+user
+9 depusage = dict()  #dict of cumulative license usage of each ~
+dept
+10 profusage = dict() #dict of cumulative license usage under <
+each professor
+Here, we go through line by line in the log file and search for OUT’s, which basically means
+that license is issued to the user. ’lines’ is a string array which contains lines of log file and we
+pass each line as ’l’. The OUT lines will be in the format shown below.
+hh:mm:ss (MLM) OUT: "feature" user@host (n licenses)
+
+===== PAGE 12 =====
+We use regular expressions grouping and matching to find OUT’s and store user name, host
+name, software name and time stamp of OUT in user, host, feature and time respectively. Then
+these are added to corresponding dictionaries and sets and are used in next parts of the code. We
+give department code (’me’ for mechanical department) as an argument to print top 10 license
+users from that department later. Also we can opt to print for any particular month alone by
+giving it as an argument (’Aug’ for August). Everyday, time stamps are printed in the format
+shown in RegEx below. When the required month starts, we start executing our code and end
+it when the log file reaches the next month. If we want to print for whole year, we give 1’ as
+argument.
+
+Listing 3.3: Searching for OUT’s using RegEx
+1 department = str(sys.argv[4])
+2 month = str(sys.argv[5])
+3 p=0
+4 next = {’Jan’:'Feb’, ‘Feb’:’Mar’, ‘Mar’:’Apr’, ‘Apr’:’May’, ‘<
+May’:'Jun’, ‘Jun’:’Jul’, ‘Jul’:'Aug’, ‘Aug':'’Sep’, ‘Sep’:'<
+Oct’, ‘Oct’:’Nov’, "Nov':’Dec’, ‘Dec’: ’Jan'}
+5 if(month == "1"):
+6 month = r‘\wt’
+7 next_month = "we are printing for whole year"
+8 else:
+9 next_month = next[month]
+10 for 1 in lines:
+ml m = re.search(r'\s’ + month + r'\s[\d]{2}\s[\d]{4}\s', 1, ©
+re.1I)
+12 if m:
+13 p=1
+14 m = re.search(r’\s’ + next_month + r'\s[\d]{2}\s[\d]{4}\s',<
+1, re.I)
+15 if m:
+16 if(p == 1):
+17 p=0
+18 break
+19 if(p == 1):
+20 # 12:18:15 (MLM) OUT: "MATLAB" ee16m084@ams112
+
+===== PAGE 13 =====
+21 # 19:28:40 (MLM) IN: "MATLAB" shobhan@SRoy
+
+22 m = re.search(r’([4\s]+)\s+\((\wt+)\)\s+0OUT: \s+"(.+)"\se
++([4\s]+@[4\s]+)', 1) #search for OUT’s’
+
+23 if m:
+
+24 time = m.group(1)
+
+25 #get timestamp, feature, user and host using regex ~
+
+grouping and add them to the dicts
+
+26 feature = m.group(3)
+
+27 user = m.group(4).split("@")[0]
+
+28 host = m.group(4).split("@")[1]
+
+29 hosts.add(host)
+
+30 features.add(feature)
+
+31 other = “other"
+
+Using RegEx, we look for multiple licenses and store the count in ’lic’. If not found, initial-
+ize lic to one. Read the time stamp and convert it from string to a datetime element and store
+it in ’time2’ dictionary with key as user name. The method here is that if previous time stamp
+is stored in *time1’, whenever there is an out, calculate the effective license usage between the
+two time stamps i.e the product of the number of licenses and the time difference(in seconds)
+and add it to the usage of corresponding user. Now, current time stamp of the user is stored in
+previous time stamp i.e time1. Now add lic to the li[user] i.e no. of licenses of user. If the user
+is new, then usage is initialized to zero and li[user] to lic.
+
+Listing 3.4: Updating user license usage and time stamps of OUT’s
+1 m = re.search(r’\((\d+)\st+licenses\)', 1)
+2 #check if multiple licenses are issued
+3 if m:
+4 lic = int(m.group(1))
+5 else:
+6 lic = 1
+7 #if not just add 1 lecense
+8
+9 time2[user] = dt.datetime.strptime(time, "%H:%M:%S")
+#current time stamp. convertion from string to ~
+
+===== PAGE 14 =====
+datetime element
+10
+ll if user in users:
+12 #if user is already present in users, add the effective
+license usage, also add the no. of licenses
+13 usa = (li[user])*((time2[user]-time1[user]).seconds~
+)
+14 usage[user] += usa
+15 time1[user] = time2[user]
+16 lifuser] += lic
+17 else:
+18 users.add(user )
+19 #else initiate usage to zero and update number of <~
+licenses
+20 usa = 0
+21 usage[user] = 0
+22 li[user] = lic
+23 time1[user] = time2[user]
+24 #current time stamp is stored in previous time ~
+stamp
+We need to find the guide name from the user-prof file. But if we open the file in every
+loop, the code runs in O(n?) time. So outside this loop, in the main function we parse through
+user-prof sheet and every line contains user names and guide names separated by spaces. We
+use RegEx grouping and searching to store these in a global dictionary named user-prof().
+Listing 3.5: Searching for guide name using user-prof file
+1 for li in linesss:
+2 m = re.search(r’A([4\s]+)\s+([A\s]+)', li)
+3 if m:
+4 us = m.group(1)
+5 pr = m.group(2)
+6 user_prof[us.lower()] = pr
+
+===== PAGE 15 =====
+Now we have list of all user names mapped to corresponding guide names in the user-prof
+global dictionary. We use it now to update the profusage of that particular professor. As the
+user-guide details are not available now, we randomly assigned each user to one of 8 professors
+named ranging from ’A’ to ’H’. Once we get the real details of the file, we can pass it as an
+argument and get the original statistics. Similarly we do the same thing for IN’s also.
+
+Listing 3.6: Updating profusage of corresponding guides
+1 if user.lower() in user_prof:
+2 if user_prof[user.lower()] not in profusage:
+3 profusage[user_prof[user.lower()]] = usa
+4 else:
+5 profusage[user_prof[user.lower()]] += usa
+
+If the user name is institute id, then it matches with the format which is: first two letters
+represent department name, next two digits represent joining year, next letter represents degree
+and the final three digits represent the roll number. Our interest is in the first two letters that
+represent department name. We get it using RegEx searching and store it in ’dept’.Then we
+update outs[dept] and depusage[dept] with corresponding values from above.
+
+Listing 3.7: Searching for user names in institute id format
+1 m = re.search(r’A([a-z]{2})[0-9]{2}[a-z][0-9]{3}$', <—
+user )
+
+2 #search for user names in the institute id formats
+
+3 ifm:
+
+4 dept = m.group(1)
+
+5 if not (dept in outs):
+
+6 #update outs and depusage of the corresponding dept
+7 outs[dept] = lic
+
+8 depusage[dept] = usa
+
+9 else:
+
+10 outs[dept] += lic
+
+i depusage[dept] += usa
+
+===== PAGE 16 =====
+When the user name is not in institute id format, then we cannot get department name
+directly from user name. Then we use the dept-host excel sheet to get this info. This sheet
+contains department names for all host names. We could parse the sheet into ’lo’ and using
+RegEx, we can find the line which contains ’host’, thereby using RegEx again in that particular
+line to find out the department. But if we check every line of the sheet every time, the code runs
+in O(n?) time.
+
+So outside this loop, in the main function we parse through the dept-host sheet and every line
+contains department names and host names separated by spaces. We create global dictionary
+*dept-host’ which stores department names for all host names. We use RegEx grouping and
+searching to do this. The dept-host sheet sometimes has host names along with ip addresses.
+So we remove ip using RegEx to get the required host name and corresponding department.
+Examples for aerospace and ocean are shown. Similarly we write for every department and
+give other as department name if it is unrecognizable.
+
+Listing 3.8: Searching for dept name using host name from dept-host file
+I for lo in liness:
+2
+3 m = re,search(r’4(.+)\s([4\s]+)', lo)
+4 if m:
+5 A = m.group(1)
+6 B = m.group(2)
+7 m = re.search(r'4([4\s]+)@10', B)
+8 if m:
+9 B = B.split("@")[0]
+10
+11 m = re.search(r'A([4\s]+)@192', B)
+12 if m:
+13 B = m.group(1)
+14
+15 if re.search(r’aerospace’, A, re.I):
+16 dept_host[B.lower()] = "ae"
+17
+18 elif re.search(r’ocean’, A, re.1):
+19 dept_host[B.lower()] = "oe"
+
+===== PAGE 17 =====
+20
+21 else:
+22 dept_host[C.lower()] = "other"
+
+As we have list of all host names mapped to corresponding departments in dept-host global
+dictionary, we use it now to update the depusage and outs of the particular user. If it is not found
+in the dept-host sheet, then we just give ’other’ as the department name and update the values.
+
+Listing 3.9: Updating outs and depusage of corresponding departments
+
+1 else:
+
+2 if(host in dept_host):
+
+3 dept_name[user] = dept_host[host]
+
+4 if not (dept_host[host] in outs):
+
+5 outs[dept_host[host]] = lic
+
+6 depusage[dept_host[host]] = usa
+7 else:
+
+8 outs[dept_host[host]] += lic
+
+9 depusage[dept_host[host]] += usa
+10
+ll else:
+12 dept_host[host] = "other"
+13 dept_name[user] = “other"
+14 if not ("other" in outs):
+15 outs["other"] = lic
+16 depusage["other"] = usa
+17 else:
+18 outs["other"] += lic
+19 depusage["other"] += usa
+
+===== PAGE 18 =====
+We use regular expressions grouping and matching to find IN’s and store user name, host
+name and time stamp of IN in user, host and time respectively. Then these are added to corre-
+sponding dictionaries and sets and are used in next chunk of the code.
+
+Listing 3.10: Searching for IN’s using RegEx
+1 m = re.search(r’ ([4\s]+)\s+\((\wt+)\)\s+IN:\st"(.+)"\s+([A\se
+]+@[A\s]+)', 1) #search for IN's
+2 if m:
+3 time = m.group(1)
+4 #feature = m.group(3)
+5 user = m.group(4).split("@")[0]
+6 host = m.group(4).split("@")[1]
+7 #hosts.add(host)
+8 #features.add( feature)
+9 other = "other"
+
+Using RegEx, we look for multiple licenses and store the count in ’lic’. If not found, initial-
+ize lic to one. Read the time stamp and convert it from string to a datetime element and store it
+in ’time2’ dictionary with key as user name. The method here is that if previous time stamp is
+stored in ’time1’, whenever there is an out/in, calculate the effective license usage between the
+two time stamps i.e the product of the number of licenses and the time difference(in seconds)
+and add it to the usage of corresponding user. Now, current time stamp of the user is stored in
+previous time stamp i.e time!. Now subtract lic to the lifuser] i.e no. of licenses of user as the
+licenses are taken back from user by the license server.
+
+Listing 3.11: Updating user license usage and time stamps of IN’s
+1 m = re.search(r’\((\d+)\s+licenses\)’, 1)
+2 #search for multiple licenses
+3 if m:
+4 lic = int(m.group(1))
+5 else:
+6 lic =1
+7
+8 time2[user] = dt.datetime.strptime(time, "%H:%M:%S") <
+
+===== PAGE 19 =====
+#current time stamp as datetime element
+9
+10 if user in users:
+11 #if user already present in users, update usage and li
+12 usa = (li[user])*((time2[user]-time1 [user] ).seconds~
+)
+13 usage[user] += usa
+14 timei[user] = time2[user]
+15 li[user] -= lic
+16 else:
+17 print("error")
+18 usa = 0
+We already showed how to search for user names in institute id format and we do the same
+here. Our interest is in the first two letters that represent department name. We get it using
+RegEx searching and store it in ’dept’. Then we update depusage[dept] with the value.
+Listing 3.12: Searching for user names in institute id format
+1 m = re.search(r'A([a-z]{2}) [0-9] {2}[a-z][0-9]{3}$', <
+user)
+2 #search for user names in institute id format
+3 if m:
+4 dept = m.group(1)
+5 if not (dept in depusage):
+6 depusage[dept] = usa
+7 else:
+8 depusage[dept] += usa
+Similarly, if the user name is not in the institute id format, then the code checks the dept-host
+global dictionary and checks for the department to which the user belongs. Then it updates the
+depusage of that corresponding department. If not found, it assigns department as ‘other’.
+
+===== PAGE 20 =====
+Listing 3.13: Searching for dept name using host name from dept-host file
+
+1 else:
+
+2 if(host in dept_host):
+
+3 if not (dept_host[host] in depusage):
+
+4 depusage[dept_host[host]] = usa
+
+5 else:
+
+6 depusage[dept_host[host]] += usa
+
+7 else:
+
+8 if not (other in depusage):
+
+9 depusage["other"] = usa
+
+10 else:
+
+11 depusage["other"] += usa
+
+Now we have the total licenses issues to all departments stored in outs[] and cumulative
+license usage of all users in usage[]. We print them and now we have data of each and every
+user. The user can be charged based on cumulative license usage.
+Listing 3.14: Printing outs and license usage of all users
+
+1 print("Department wise licenses issued:")
+
+2 for key in sorted(outs.iterkeys()):
+
+3 #print no. of dept wise licenses issued
+
+4 print ("%s: %s" % (key, outs[key]))
+
+5
+
+6 print("\n")
+
+7 print("User wise usage in seconds:")
+
+8 for key in sorted(usage.iterkeys()):
+
+9 #print cumulative license usage of each user
+
+10 print ("%s: %s secs" % (key, usage[key]))
+
+11
+
+12 print("\n")
+
+===== PAGE 21 =====
+We have total cumulative usage under each professor/guide stored in profusage[]. We print
+
+it to see the license usage statistics under each professor.
+
+Listing 3.15: Printing license usage under each professor
+
+1 print("Professor wise %s usage in seconds:" % feature)
+2 for key in sorted(profusage.iterkeys()):
+3 #print cumulative license usage of each prof
+4 print ("Prof %s: %s secs" % (key, profusage[key]))
+5
+6 print("\n")
+
+Similarly we have total cumulative usage of each department stored in depusage[]. We print
+it to see the department wise statistics and we can print top 20 users for the software on the
+license server by sorting usage].
+
+Listing 3.16: Printing license usage of departments and top 20 users overall
+
+1 print("Department wise usage in seconds:")
+
+2 for key in sorted(depusage.iterkeys()):
+
+3 #print cumulative license usage of each dept
+
+4 print ("%s: %s secs" % (key, depusage[key]))
+
+5
+
+6 print("\n")
+
+7 p=0
+
+8 print("Top 20 users:") #print top 20 users
+
+9 for key, value in sorted(usage.iteritems(), key=lambda (k,v): (©
+v,k), reverse = True):
+
+10 p += 1
+
+1 print("%s) %s: %s: %s secs" % (p, key, dept_name[key], <
+
+value) )
+
+12 if(p == 20):
+
+13 break
+
+14
+
+15 print("\n")
+
+===== PAGE 22 =====
+To find the top 10 users of any department,we follow this procedure. Lets see for mechanical
+department. We parse through the users set and check if the department name of that user is
+"me". Then we store the usage in different dictionary ’me-usage’. Then by sorting me-usage,
+we print the top 10 license users. Similarly we can do this for all departments, by giving the
+third input argument as the department code.
+
+Listing 3.17: Printing top 10 users of any department
+
+1 print("Top 10 users of %s dept:" % department)
+
+2 me_usage = dict()
+
+3 for user in users:
+
+4 if(dept_name[user] == department):
+
+5 me_usage[user] = usage[user]
+
+6 else:
+
+7 continue
+
+8 q=0
+
+9 for key, value in sorted(me_usage.iteritems(), key=lambda (k,v)~
+
+: (v,k), reverse = True):
+
+10 q += 1
+11 print("%s) %s: %s secs" % (q, key, value))
+12 if(q == 10):
+13 break
+14
+15 print("\n")
+
+Then we plot the number of licenses issued, license usage for each department and license
+
+usage under each guide using matplotlib library of python.
+
+Listing 3.18: Plotting the results
+
+1 plt.bar(list(outs.keys()), outs.values(), color='b’)
+2 plt.title('Department wise %s licenses issued’ % feature)
+3 plt.xlabel( ‘Department’ )
+4 plt.ylabel('No. of %s licenses issued’ % feature)
+5 plt.show()
+6
+
+===== PAGE 23 =====
+7 plt.bar(list(depusage.keys()), depusage.values(), color='g')
+
+8 plt.title(’Department wise %s usage in seconds’ % feature)
+
+9 plt.xlabel( ‘Department’ )
+
+10 plt.ylabel('%s Usage in seconds’ % feature)
+
+11 plt.show()
+
+12
+
+13 plt.bar(list(depusagemins.keys()), depusagemins.values(), color
+='b')
+
+14 plt.title('Department wise %s usage in minutes’ % feature)
+
+15 plt.xlabel( ‘Department’ )
+
+16 plt.ylabel('%s Usage in minutes’ % feature)
+
+17 plt.show()
+
+18
+
+19 plt.bar(list(profusage.keys()), profusage.values(), color='b’)
+
+20 plt.title(’Professor wise %s usage in seconds’ % feature)
+
+21 plt.xlabel('Professor’)
+
+22 plt.ylabel('%s Usage in seconds’ % feature)
+
+23 plt.show()
+
+===== PAGE 24 =====
+CHAPTER 4
+Results
+
+4.1 Outputs
+The outputs printed, i.e department wise licenses issued and license usage in seconds for the
+Ansys log file is shown for the year 2017. So, we used *1’ as the third argument to get statistics
+for the whole year. If we wanted statistics for the month of June, we give the third input
+argument as ’Jun’.
+
+Department wise licenses issued:
+
+ae: 6785
+
+am: 288
+
+at: 276
+
+ce: 1925
+
+ch: 6978
+
+ed: 496
+
+ee: 86
+
+me: 58257
+
+mm: 411
+
+na: 113
+
+oe: 6259
+
+other: 9121
+
+Figure 4.1: Department wise Ansys licenses issued
+
+Department wise usage in seconds:
+
+ae: 147911761 secs
+
+am: 8882576 secs
+
+at: 15163538 secs
+
+ce: 18411868 secs
+
+ch: 85894391 secs
+
+ed: 1531687 secs
+
+ee: 3588522 secs
+
+me: 1525656321 secs
+
+mm: 27968938 secs
+
+na: 312661 secs
+
+oe: 192561155 secs
+
+other: 301228929 secs
+
+Figure 4.2: Department wise Ansys usage in seconds
+
+===== PAGE 25 =====
+Overall top 20 license server users of Ansys from all departments are shown below. Also
+Top 10 users from mechanical department are shown when the fourth argument is given as ’me’.
+
+Top 2@ users:
+
+1) me16d@32: me: 131252959 secs
+
+2) me13s@61: me: 128621159 secs
+
+3) NCCRD: me: 87484969 secs
+
+4) vbabu: me: 81695828 secs
+
+5) mei5m118: me: 72091111 secs
+
+6) ae14d2@7: ae: 71195773 secs
+
+7) me1l4s@@8: me: 61306874 secs
+
+8) Nanthini: me: 57471248 secs
+
+9) malli: me: 57146156 secs
+
+18) Admin: ch: 51547318 secs
+
+11) me13d@26: me: 46189354 secs
+
+12) me15m@58: me: 41678085 secs
+
+13) me12d@@1: me: 40506735 secs
+
+14) me15d@@2: me: 39568985 secs
+
+15) Raghavan: me: 37556854 secs
+
+16) 0€15d@18: oe: 36672801 secs
+
+17) Ssheshan: me: 33487185 secs
+
+18) sreekar: other: 31688819 secs
+
+19) a291:; other: 31159383 secs
+
+26) spdas: other: 30196127 secs
+Figure 4.3: Top 20 Ansys users
+
+Top 18 users of mech dept:
+
+1) me1@d@32: 131252959 secs
+
+2) me13s@61: 128821159 secs
+
+3) NCCRD: 87484969 secs
+
+4) vbabu: 81695828 secs
+
+5) mei5m118: 72091111 secs
+
+6) me14s@@8: 61306874 secs
+
+7) Nanthini: 57471248 secs
+
+8) malli: 57146156 secs
+
+9) me13d826: 46189354 secs
+
+18) mei5m@58: 41878085 secs
+
+Figure 4.4: Top 10 Ansys users of mechanical dept
+
+===== PAGE 26 =====
+Currently we do not have the information of which user comes under which professor. For
+some softwares, we have the information but it is not logged in a format which we can use.
+Suppose some guide names are written in full names, some in short forms and some by their
+email id’s. hence we need to make sure that the professor details are logged in fixed format
+from here on. A good idea would be to use their institute email ids as they are unique. In this
+project we assigned each user to random professors, whose names range from ’A’ to ’H’. This
+is used for illustration purposes only.
+
+Professor wise Ansys usage in seconds:
+A: 546446259 secs
+B: 371531772 secs
+C: 376135899 secs
+D: 381281521 secs
+E: 547649682 secs
+F: 338743015 secs
+G: 489331343 secs
+H: 573977387 secs
+Figure 4.5: Professor wise Ansys usage in seconds
+
+Also while running the script in terminal or command line, we use five arguments to run this
+script. First argument is the log file of the software for which we need the statistics. Second
+argument is the host-dept sheet which contains details of each host mapped to corresponding
+departments. Third argument is the user-guide sheet which contains details of each user mapped
+to corresponding guide. Fourth argument is the department code for which we need the top 10
+license users from. Fifth argument is the three letter month for which we need the statistics for.
+If we need statistics for the whole year, we give the argument as ’1’.
+
+===== PAGE 27 =====
+4.2 Plots
+Department wise Ansys licenses issued
+70000
+> 60000
+v
+i]
+a
+‘q 50000
+a
+c
+ov
+Y 40000
+a
+>
+< 30000
+.
+°
+2 20000
+10000
+(0)
+ae am at ce ch ed ee me mmmmena oe otherpe ph
+Department
+Figure 4.6: Department wise Ansys licenses issued
+le7 Department wise Ansys usage in minutes
+3.5
+3.0
+n
+2
+S
+£25
+=
+&
+® 2.0
+oO
+a
+b>)
+y 15
+a
+i=
+t
+10
+0.5
+0.0
+ae am at ce ch ed ee me mmmmena oe otherpe ph
+Department
+Figure 4.7: Department wise Ansys usage in minutes
+
+===== PAGE 28 =====
+Department wise Comsol licenses issued
+14000
+'g 12000
+]
+a
+y 10000
+a
+c
+ov
+= 8000
+9°
+E
+8 6000
+“
+°
+3 4000
+2000
+(0)
+ae ce ch ed ee ma me oe other ph
+Department
+Figure 4.8: Department wise Comsol licenses issued
+le7 Department wise Comsol usage in minutes
+2.0
+”
+2
+5
+£15
+€
+£
+vo
+a
+a
+310
+3
+a
+=
+fo}
+[s)
+0.5
+0.0
+ae ce ch ed ee ma me oe other ph
+Department
+Figure 4.9: Department wise Comsol usage in minutes
+
+===== PAGE 29 =====
+le7 Department wise Abaqus licenses issued
+08
+oS
+vo
+2
+a
+2 0.6
+a
+v
+a
+Fa
+ov
+g
+3
+S 0.4
+o
+2
+<
+ra
+°
+Ss
+= 0.2
+0.0
+ae am bt ce cse ed ee me mm na_ oe other
+Department
+Figure 4.10: Department wise Abaqus licenses issued
+les Department wise Abaqus usage in minutes
+175
+150
+”
+2
+2 125
+&
+&
+w 1.00
+a
+so
+a
+ba)
+0.75
+3
+ct
+os
+a2
+t 0.50
+0.25
+0.00
+ae am bt ce cse ed e@ me mm na_ oe other
+Department
+Figure 4.11: Department wise Abaqus usage in minutes
+
+===== PAGE 30 =====
+Department wise Matlab licenses issued
+600000
+500000
+io3
+o
+a
+2 400000
+%
+ov
+a
+c
+ov
+&
+= 300000
+Q
+%
+8
+=
+5 200000
+s
+2
+100000
+(0)
+ae am be bs bt ce ch cs csecy ed ee ep mamemmna oethepe ph
+Department
+Figure 4.12: Department wise Matlab licenses issued
+le7 Department wise Matlab usage in minutes
+8
+7
+”
+26
+5
+&
+E
+e?
+ov
+a
+8 4
+2
+i
+33
+oc
+=
+2
+1
+(0)
+ae ambe bs bt ce ch cs csecy ed ee ep mamemmna o@thepe ph
+Department
+Figure 4.13: Department wise Matlab usage in minutes
+
+===== PAGE 31 =====
+After randomly assigning each user to a random professor, the license usage under each profes-
+sor plot is shown below.
+les Professor wise Ansys usage in seconds
+
+6
+
+5
+w
+a4
+°
+rs
+vo
+a
+&
+23
+i
+a
+3
+2
+B2
+<
+
+1
+
+0
+
+A B Cc D E F G H
+Professor
+Figure 4.14: Department wise Matlab usage in minutes
+
+===== PAGE 32 =====
+CHAPTER 5
+
+Conclusions
+5.1 Observations
+If we observe the outputs and plots, we can find some trends of users across various depart-
+ments. For Ansys software, most of the users from Top 20 belongs to mechanical department.
+From the overall plots, we can see that the highest Ansys license usage comes from mechan-
+ical department. Similarly we can see the trends for other softwares. The users categorized
+under ’other’ department has considerable license usage. This means that the user details are
+not updated in the host - department excel sheet. But by assigning those users under ’other’
+department, we store their usage as well. We get their details by printing the license usage of
+users using usage[] dictionary and selecting the specific users whose department is ’other’, by
+using dept-name[] dictionary, which stores department names for each user. Then by checking
+the values printed here, we can find the details of the users from ’other’ department and charge
+them based on their license usage.
+5.2 Future Directions
+Now we know the license usage based on user perspective and department perspective. Every
+user has a guide and they need the guide approval before registering on the license server.
+But currently the guide details are not being maintained properly. Some are left blank in the
+registrations excel sheet. Some users filled their guide name but we code cannot be written
+to sort based on guide names unless each guide name is given a unique id. Every professor
+working at IITM has a unique institute email id, this can be used as their guide’s id while the
+users are registering on the license server. This way, we can get license usage under each guide
+as well. Similar to what we did to find the department usage, we can find the guide wise usage.
+To make the code 100 percent accurate, in future, we need to make sure that there are no typos
+in host names in the excel sheets.
+
+===== PAGE 33 =====
+5.3 Securities
+
+It is our duty to make sure that license usage is not misused i.e someone should not be allowed
+to pretend to be someone else. While registering on the license server, the user is asked to fill
+his MAC address and IP address and the user is allowed to choose a unique user id or to use his
+default email id. Then the license is issued linked to that MAC and IP address only. Also while
+signing in to the software in browser, the software asks for your email id and password. So, it
+is the duty of the user to safeguard his passwords to prevent misuse of license usage.
+
+===== PAGE 34 =====
+REFERENCES
+[1] FLEXIm - Wikipedia contributors. (2018, April 13). FlexNet Publisher. In Wikipedia, The
+Free Encyclopedia. Retrieved May 24, 2018
+[2] FLEXIm operation - What is FLEXIm? What is FlexNet? In OpenLM Blog. Retrieved May
+24, 2018

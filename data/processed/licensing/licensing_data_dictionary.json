@@ -1,0 +1,55 @@
+{
+  "domain": "Licensing",
+  "purpose": "Normalize software license inventory, usage events and authorized cost references for FinOps analysis.",
+  "research_methodologies": [
+    {
+      "source": "license1.pdf",
+      "method": "Analyze license-server sessions and usage over time; group by application and user; inspect concurrent usage and incomplete session records."
+    },
+    {
+      "source": "license2.pdf",
+      "method": "Parse FLEXlm OUT, IN and DENIED events; pair check-outs and check-ins; calculate elapsed usage weighted by checked-out license quantity; group by user, feature and department when mapping data exists."
+    }
+  ],
+  "event_types": {
+    "OUT": "License checked out / issued",
+    "IN": "License checked in / returned",
+    "DENIED": "License request denied"
+  },
+  "core_entities": [
+    "software_product",
+    "publisher",
+    "license_feature",
+    "license_metric",
+    "entitlement",
+    "installation",
+    "assignment",
+    "user",
+    "host",
+    "department",
+    "license_event",
+    "contract",
+    "cost_reference"
+  ],
+  "calculations": {
+    "session_duration_seconds": "checkin_timestamp - checkout_timestamp",
+    "license_usage_seconds": "session_duration_seconds * checked_out_license_quantity",
+    "utilization_pct": "observed_peak_or_average_consumption / entitled_quantity * 100, only when comparable quantities and time windows are available",
+    "potential_reclaim_quantity": "entitled_quantity - measured_peak_concurrent_usage, only after checking contract terms, deployment scope and business requirements"
+  },
+  "quality_rules": [
+    "Do not count an OUT event as a completed session until a matching IN event is found or an explicit session-end rule is applied.",
+    "Keep unmatched OUT events visible as open sessions; do not silently discard them.",
+    "Do not allow negative session durations.",
+    "Preserve the original event timestamp and timezone when known.",
+    "Do not infer department from username or hostname unless an authoritative mapping is supplied.",
+    "Keep feature names and license metrics distinct; a feature is not necessarily a purchasable license unit.",
+    "Do not calculate monetary savings without an authorized unit price and valid reclaim quantity.",
+    "Do not infer compliance from utilization alone; entitlement, deployment and contract rules are required."
+  ],
+  "limitations": [
+    "The research papers are methodological references, not current organizational inventory or usage records.",
+    "The papers do not provide current contract prices or enterprise entitlements.",
+    "Session duration is not always equivalent to active application use."
+  ]
+}

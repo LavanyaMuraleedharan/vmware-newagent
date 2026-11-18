@@ -1,0 +1,20 @@
+{
+    "domain": "Licensing",
+    "data_origin": "simulated",
+    "description": "Synthetic demonstration records. They do not represent actual enterprise users, contracts, license server logs, prices or realized savings.",
+    "random_seed": 42,
+    "simulation_days": 90,
+    "simulation_start": "2026-08-19T00:00:00",
+    "simulation_end": "2026-11-16T23:59:00",
+    "software_features": 20,
+    "inventory_records": 20,
+    "event_records": 53962,
+    "event_type_counts": {
+        "OUT": 26977,
+        "IN": 26977,
+        "DENIED": 8
+    },
+    "cost_reference_records": 20,
+    "currency": "INR",
+    "cost_assumption": "Illustrative annual unit costs; not actual vendor quotes."
+}

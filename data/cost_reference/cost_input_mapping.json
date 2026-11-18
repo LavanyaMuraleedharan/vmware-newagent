@@ -1,0 +1,108 @@
+
+{
+  "vmware": {
+    "available_metrics": [
+      "avg_cpu_usage_pct",
+      "peak_cpu_usage_pct",
+      "avg_memory_utilization_pct",
+      "peak_memory_utilization_pct",
+      "avg_cpu_usage_mhz",
+      "avg_memory_usage_kb"
+    ],
+    "required_cost_inputs": [
+      "server_purchase_cost",
+      "server_useful_life_years",
+      "annual_maintenance_cost",
+      "electricity_rate_usd_per_kwh"
+    ],
+    "cost_status": "requires_cost_assumptions",
+    "data_origin": "reference_dataset"
+  },
+  "storage": {
+    "available_metrics": [
+      "avg_iops",
+      "median_iops",
+      "avg_latency",
+      "p95_latency",
+      "avg_n_disks",
+      "raid",
+      "device_type"
+    ],
+    "required_cost_inputs": [
+      "storage_purchase_cost",
+      "usable_capacity_tb",
+      "annual_maintenance_cost",
+      "annual_energy_kwh"
+    ],
+    "cost_status": "requires_capacity_and_cost_data",
+    "data_origin": "processed_dataset"
+  },
+  "backup": {
+    "available_metrics": [
+      "source_data_size_gb",
+      "repository_id",
+      "policy_id",
+      "environment",
+      "server_type"
+    ],
+    "required_cost_inputs": [
+      "backup_software_license_cost",
+      "repository_hardware_cost",
+      "retention_period_days"
+    ],
+    "cost_status": "requires_cost_assumptions",
+    "data_origin": "simulated"
+  },
+  "compute_gpu": {
+    "available_metrics": [
+      "unique_servers",
+      "unique_clusters",
+      "total_gpu_count_across_records",
+      "maximum_cpu_capacity_cores_observed"
+    ],
+    "required_cost_inputs": [
+      "server_purchase_cost",
+      "gpu_purchase_cost",
+      "server_useful_life_years",
+      "annual_energy_kwh"
+    ],
+    "cost_status": "requires_cost_assumptions_and_utilization",
+    "data_origin": "reference_dataset"
+  },
+  "database": {
+    "available_metrics": [
+      "duration_ms",
+      "cpu_time_ms",
+      "wait_time_ms",
+      "io_time_ms",
+      "memory_peak_mb",
+      "bytes_scanned",
+      "concurrency"
+    ],
+    "required_cost_inputs": [
+      "database_server_cost",
+      "database_license_cost",
+      "allocated_vcpu",
+      "allocated_storage_tb"
+    ],
+    "cost_status": "requires_infrastructure_allocation",
+    "data_origin": "reference_dataset"
+  },
+  "licensing": {
+    "available_metrics": [
+      "entitlement_quantity",
+      "peak_concurrent_usage",
+      "average_concurrent_usage",
+      "denied_requests",
+      "reclaim_candidate_quantity",
+      "estimated_annual_financial_impact"
+    ],
+    "required_cost_inputs": [
+      "license_unit_cost",
+      "license_metric",
+      "contract_term"
+    ],
+    "cost_status": "simulated_cost_available_requires_validation",
+    "data_origin": "simulated"
+  }
+}

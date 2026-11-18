@@ -1,0 +1,38 @@
+{
+    "domain": "VMware",
+    "source_file_count": 1250,
+    "total_samples": 11221800,
+    "cpu_status_counts": {
+        "low_utilization_review": 827,
+        "high_utilization": 275,
+        "moderate_or_variable_utilization": 148
+    },
+    "memory_status_counts": {
+        "low_utilization_review": 802,
+        "moderate_or_variable_utilization": 263,
+        "high_utilization": 183,
+        "insufficient_data": 2
+    },
+    "optimization_review_counts": {
+        "low_utilization_candidate": 674,
+        "performance_risk_review": 310,
+        "review_required": 264,
+        "insufficient_data": 2
+    },
+    "thresholds": {
+        "cpu_low_average_pct": 20,
+        "cpu_low_peak_pct": 60,
+        "memory_low_average_pct": 30,
+        "memory_low_peak_pct": 70,
+        "cpu_high_average_pct": 80,
+        "memory_high_average_pct": 80
+    },
+    "limitations": [
+        "Source files do not contain confirmed VM IDs.",
+        "Historical benchmark data is not live infrastructure data.",
+        "Low utilization flags are screening signals only.",
+        "No financial costs or savings are calculated here.",
+        "Resizing requires workload, service and capacity validation."
+    ],
+    "output_file": "C:\\Users\\vasundra sri\\Desktop\\AI_AGENT\\data\\processed\\vmware\\vmware_utilization_analysis.csv"
+}

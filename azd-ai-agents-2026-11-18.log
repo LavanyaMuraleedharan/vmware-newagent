@@ -1,0 +1,1073 @@
+[2026-11-18T12:35:04+05:30] Authentication: AzureDeveloperCLICredential.GetToken() acquired a token for scope "https://management.azure.com/.default"
+[2026-11-18T12:35:04+05:30] Retry: =====> Try=1 for POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2024-04-01
+[2026-11-18T12:35:04+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2024-04-01
+   Accept: application/json
+   Authorization: REDACTED
+   Content-Length: 426
+   Content-Type: application/json
+   User-Agent: azsdk-go-azure-ai-agents-policy/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:35:04+05:30] Response: ==> REQUEST/RESPONSE (Try=1/507.3118ms, OpTime=507.8401ms) -- RESPONSE RECEIVED
+   POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2024-04-01
+   Accept: application/json
+   Authorization: REDACTED
+   Content-Length: 426
+   Content-Type: application/json
+   User-Agent: azsdk-go-azure-ai-agents-policy/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Cache-Control: no-cache
+   Content-Length: 173
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:01:51 GMT
+   Expires: -1
+   Pragma: no-cache
+   Strict-Transport-Security: REDACTED
+   X-Cache: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   X-Ms-Operation-Identifier: REDACTED
+   X-Ms-Ratelimit-Remaining-Tenant-Reads: REDACTED
+   X-Ms-Ratelimit-Remaining-Tenant-Resource-Requests: REDACTED
+   X-Ms-Request-Id: 9aa20add-756c-4587-9cc2-586a0cf0e04b
+   X-Ms-Resource-Graph-Request-Duration: REDACTED
+   X-Ms-Routing-Request-Id: REDACTED
+   X-Ms-User-Quota-Remaining: REDACTED
+   X-Ms-User-Quota-Resets-After: REDACTED
+   X-Msedge-Ref: REDACTED
+
+[2026-11-18T12:35:04+05:30] Retry: response 200
+[2026-11-18T12:35:04+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:35:04+05:30] Retry: =====> Try=1 for POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2024-04-01
+[2026-11-18T12:35:04+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2024-04-01
+   Accept: application/json
+   Authorization: REDACTED
+   Content-Length: 3526
+   Content-Type: application/json
+   User-Agent: azsdk-go-azure-ai-agents-policy/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:35:06+05:30] Response: ==> REQUEST/RESPONSE (Try=1/2.1382098s, OpTime=2.1382098s) -- RESPONSE RECEIVED
+   POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2024-04-01
+   Accept: application/json
+   Authorization: REDACTED
+   Content-Length: 3526
+   Content-Type: application/json
+   User-Agent: azsdk-go-azure-ai-agents-policy/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Cache-Control: no-cache
+   Content-Length: 76
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:01:53 GMT
+   Expires: -1
+   Pragma: no-cache
+   Strict-Transport-Security: REDACTED
+   X-Cache: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   X-Ms-Operation-Identifier: REDACTED
+   X-Ms-Ratelimit-Remaining-Tenant-Reads: REDACTED
+   X-Ms-Ratelimit-Remaining-Tenant-Resource-Requests: REDACTED
+   X-Ms-Request-Id: deb62c45-e59e-4fbb-8101-03ca4cf82a13
+   X-Ms-Resource-Graph-Request-Duration: REDACTED
+   X-Ms-Routing-Request-Id: REDACTED
+   X-Ms-User-Quota-Remaining: REDACTED
+   X-Ms-User-Quota-Resets-After: REDACTED
+   X-Msedge-Ref: REDACTED
+
+[2026-11-18T12:35:06+05:30] Retry: response 200
+[2026-11-18T12:35:06+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:35:06+05:30] Retry: =====> Try=1 for GET https://management.azure.com/subscriptions/d069339a-2888-4dc6-96f8-a40d23153038/resourceGroups/rg-lavamdn04-5265/providers/Microsoft.CognitiveServices/accounts/lavamdn04-2479-resource/projects/lavamdn04-2479/providers/Microsoft.Authorization/policyAssignments?%24filter=REDACTED&%24top=REDACTED&api-version=2023-04-01
+[2026-11-18T12:35:06+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://management.azure.com/subscriptions/d069339a-2888-4dc6-96f8-a40d23153038/resourceGroups/rg-lavamdn04-5265/providers/Microsoft.CognitiveServices/accounts/lavamdn04-2479-resource/projects/lavamdn04-2479/providers/Microsoft.Authorization/policyAssignments?%24filter=REDACTED&%24top=REDACTED&api-version=2023-04-01
+   Accept: application/json
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents-policy/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:35:06+05:30] Response: ==> REQUEST/RESPONSE (Try=1/57.2111ms, OpTime=57.2111ms) -- RESPONSE RECEIVED
+   GET https://management.azure.com/subscriptions/d069339a-2888-4dc6-96f8-a40d23153038/resourceGroups/rg-lavamdn04-5265/providers/Microsoft.CognitiveServices/accounts/lavamdn04-2479-resource/projects/lavamdn04-2479/providers/Microsoft.Authorization/policyAssignments?%24filter=REDACTED&%24top=REDACTED&api-version=2023-04-01
+   Accept: application/json
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents-policy/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Cache-Control: no-cache
+   Content-Length: 1352
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:01:53 GMT
+   Expires: -1
+   Pragma: no-cache
+   Strict-Transport-Security: REDACTED
+   X-Cache: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   X-Ms-Operation-Identifier: REDACTED
+   X-Ms-Ratelimit-Remaining-Subscription-Global-Reads: REDACTED
+   X-Ms-Ratelimit-Remaining-Subscription-Reads: REDACTED
+   X-Ms-Request-Id: 7a524dc0-6f51-4858-964b-9968e71c7f3c
+   X-Ms-Routing-Request-Id: REDACTED
+   X-Msedge-Ref: REDACTED
+
+[2026-11-18T12:35:06+05:30] Retry: response 200
+[2026-11-18T12:35:06+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:35:11+05:30] Retry: =====> Try=1 for GET https://management.azure.com/subscriptions/d069339a-2888-4dc6-96f8-a40d23153038/resourceGroups/rg-lavamdn04-5265/providers/Microsoft.CognitiveServices/accounts/lavamdn04-2479-resource/projects/lavamdn04-2479?api-version=2025-06-01
+[2026-11-18T12:35:12+05:30] Authentication: AzureDeveloperCLICredential.GetToken() acquired a token for scope "https://management.core.windows.net//.default"
+[2026-11-18T12:35:12+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://management.azure.com/subscriptions/d069339a-2888-4dc6-96f8-a40d23153038/resourceGroups/rg-lavamdn04-5265/providers/Microsoft.CognitiveServices/accounts/lavamdn04-2479-resource/projects/lavamdn04-2479?api-version=2025-06-01
+   Accept: application/json
+   Authorization: REDACTED
+   User-Agent: azsdk-go-armcognitiveservices/v2.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:35:12+05:30] Response: ==> REQUEST/RESPONSE (Try=1/435.1286ms, OpTime=435.8126ms) -- RESPONSE RECEIVED
+   GET https://management.azure.com/subscriptions/d069339a-2888-4dc6-96f8-a40d23153038/resourceGroups/rg-lavamdn04-5265/providers/Microsoft.CognitiveServices/accounts/lavamdn04-2479-resource/projects/lavamdn04-2479?api-version=2025-06-01
+   Accept: application/json
+   Authorization: REDACTED
+   User-Agent: azsdk-go-armcognitiveservices/v2.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Cache-Control: no-cache
+   Content-Length: 1195
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:01:59 GMT
+   Etag: "89012672-0000-2200-0000-6afd471a0000"
+   Expires: -1
+   Pragma: no-cache
+   Strict-Transport-Security: REDACTED
+   X-Cache: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Envoy-Upstream-Service-Time: REDACTED
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   X-Ms-Ratelimit-Remaining-Subscription-Global-Reads: REDACTED
+   X-Ms-Ratelimit-Remaining-Subscription-Reads: REDACTED
+   X-Ms-Request-Id: b0cc62f5-03c1-4924-ad6b-e24f59046cd9
+   X-Ms-Routing-Request-Id: REDACTED
+   X-Msedge-Ref: REDACTED
+
+[2026-11-18T12:35:12+05:30] Retry: response 200
+[2026-11-18T12:35:12+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:35:12+05:30] Retry: =====> Try=1 for GET https://management.azure.com/subscriptions/d069339a-2888-4dc6-96f8-a40d23153038/resourceGroups/rg-lavamdn04-5265/providers/Microsoft.CognitiveServices/accounts/lavamdn04-2479-resource/projects/lavamdn04-2479/providers/Microsoft.Authorization/roleAssignments?%24filter=REDACTED&api-version=2022-04-01
+[2026-11-18T12:35:13+05:30] Authentication: AzureDeveloperCLICredential.GetToken() acquired a token for scope "https://management.core.windows.net//.default"
+[2026-11-18T12:35:13+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://management.azure.com/subscriptions/d069339a-2888-4dc6-96f8-a40d23153038/resourceGroups/rg-lavamdn04-5265/providers/Microsoft.CognitiveServices/accounts/lavamdn04-2479-resource/projects/lavamdn04-2479/providers/Microsoft.Authorization/roleAssignments?%24filter=REDACTED&api-version=2022-04-01
+   Accept: application/json
+   Authorization: REDACTED
+   User-Agent: azsdk-go-armauthorization/v2.2.0 (go1.26.4; Windows_NT)
+
+[2026-11-18T12:35:15+05:30] Response: ==> REQUEST/RESPONSE (Try=1/1.811942s, OpTime=1.811942s) -- RESPONSE RECEIVED
+   GET https://management.azure.com/subscriptions/d069339a-2888-4dc6-96f8-a40d23153038/resourceGroups/rg-lavamdn04-5265/providers/Microsoft.CognitiveServices/accounts/lavamdn04-2479-resource/projects/lavamdn04-2479/providers/Microsoft.Authorization/roleAssignments?%24filter=REDACTED&api-version=2022-04-01
+   Accept: application/json
+   Authorization: REDACTED
+   User-Agent: azsdk-go-armauthorization/v2.2.0 (go1.26.4; Windows_NT)
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Cache-Control: no-cache
+   Content-Length: 2543
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:02:01 GMT
+   Expires: -1
+   Pragma: no-cache
+   Strict-Transport-Security: REDACTED
+   X-Cache: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Correlation-Request-Id: REDACTED
+   X-Ms-Operation-Identifier: REDACTED
+   X-Ms-Ratelimit-Remaining-Subscription-Global-Reads: REDACTED
+   X-Ms-Ratelimit-Remaining-Subscription-Reads: REDACTED
+   X-Ms-Request-Id: 1a707456-59ba-4d75-80ef-2c2ccdadf5d2
+   X-Ms-Routing-Request-Id: REDACTED
+   X-Msedge-Ref: REDACTED
+   X-Powered-By: REDACTED
+
+[2026-11-18T12:35:15+05:30] Retry: response 200
+[2026-11-18T12:35:15+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:35:15+05:30] Authentication: AzureDeveloperCLICredential.GetToken() acquired a token for scope "https://ai.azure.com/.default"
+[2026-11-18T12:35:15+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents?api-version=v1&limit=REDACTED
+[2026-11-18T12:35:15+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents?api-version=v1&limit=REDACTED
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:35:16+05:30] Response: ==> REQUEST/RESPONSE (Try=1/225.4563ms, OpTime=226.1017ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents?api-version=v1&limit=REDACTED
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:02:03 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: 8fb5bd756681188fcca90cc35dbd0359
+
+[2026-11-18T12:35:16+05:30] Retry: response 200
+[2026-11-18T12:35:16+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:35:16+05:30] Retry: =====> Try=1 for GET https://management.azure.com/subscriptions/d069339a-2888-4dc6-96f8-a40d23153038/resourceGroups/rg-lavamdn04-5265/providers/Microsoft.CognitiveServices/accounts/lavamdn04-2479-resource/projects/lavamdn04-2479/providers/Microsoft.Authorization/roleAssignments?%24filter=REDACTED&api-version=2022-04-01
+[2026-11-18T12:35:16+05:30] Authentication: AzureDeveloperCLICredential.GetToken() acquired a token for scope "https://management.core.windows.net//.default"
+[2026-11-18T12:35:16+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://management.azure.com/subscriptions/d069339a-2888-4dc6-96f8-a40d23153038/resourceGroups/rg-lavamdn04-5265/providers/Microsoft.CognitiveServices/accounts/lavamdn04-2479-resource/projects/lavamdn04-2479/providers/Microsoft.Authorization/roleAssignments?%24filter=REDACTED&api-version=2022-04-01
+   Accept: application/json
+   Authorization: REDACTED
+   User-Agent: azsdk-go-armauthorization/v2.2.0 (go1.26.4; Windows_NT)
+
+[2026-11-18T12:35:16+05:30] Response: ==> REQUEST/RESPONSE (Try=1/64.1285ms, OpTime=64.1285ms) -- RESPONSE RECEIVED
+   GET https://management.azure.com/subscriptions/d069339a-2888-4dc6-96f8-a40d23153038/resourceGroups/rg-lavamdn04-5265/providers/Microsoft.CognitiveServices/accounts/lavamdn04-2479-resource/projects/lavamdn04-2479/providers/Microsoft.Authorization/roleAssignments?%24filter=REDACTED&api-version=2022-04-01
+   Accept: application/json
+   Authorization: REDACTED
+   User-Agent: azsdk-go-armauthorization/v2.2.0 (go1.26.4; Windows_NT)
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Cache-Control: no-cache
+   Content-Length: 2543
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:02:03 GMT
+   Expires: -1
+   Pragma: no-cache
+   Strict-Transport-Security: REDACTED
+   X-Cache: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Correlation-Request-Id: REDACTED
+   X-Ms-Operation-Identifier: REDACTED
+   X-Ms-Ratelimit-Remaining-Subscription-Global-Reads: REDACTED
+   X-Ms-Ratelimit-Remaining-Subscription-Reads: REDACTED
+   X-Ms-Request-Id: ebeaa7a2-aa7c-446f-a8f4-9b68ab3568ce
+   X-Ms-Routing-Request-Id: REDACTED
+   X-Msedge-Ref: REDACTED
+   X-Powered-By: REDACTED
+
+[2026-11-18T12:35:16+05:30] Retry: response 200
+[2026-11-18T12:35:16+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:35:17+05:30] Authentication: AzureDeveloperCLICredential.GetToken() acquired a token for scope "https://ai.azure.com/.default"
+[2026-11-18T12:35:17+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent?api-version=v1
+[2026-11-18T12:35:17+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:35:17+05:30] Response: ==> REQUEST/RESPONSE (Try=1/61.9218ms, OpTime=61.9218ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:02:04 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: 96c9895294354aa4e70c39266ef171e5
+
+[2026-11-18T12:35:17+05:30] Retry: response 200
+[2026-11-18T12:35:17+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:35:17+05:30] Retry: =====> Try=1 for POST https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent?api-version=v1
+[2026-11-18T12:35:17+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   POST https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent?api-version=v1
+   Authorization: REDACTED
+   Content-Length: 101093804
+   Content-Type: multipart/form-data; boundary=a2644f6793d03c954541d6f08427e312842a7742531523afd6d494c4e605
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Code-Zip-Sha256: REDACTED
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:35:26+05:30] Response: ==> REQUEST/RESPONSE (Try=1/8.9330431s, OpTime=8.9347196s) -- RESPONSE RECEIVED
+   POST https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent?api-version=v1
+   Authorization: REDACTED
+   Content-Length: 101093804
+   Content-Type: multipart/form-data; boundary=a2644f6793d03c954541d6f08427e312842a7742531523afd6d494c4e605
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Code-Zip-Sha256: REDACTED
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:02:13 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: b2d920b3772e0a7d6a875b358538099c
+
+[2026-11-18T12:35:26+05:30] Retry: response 200
+[2026-11-18T12:35:26+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:35:37+05:30] Authentication: AzureDeveloperCLICredential.GetToken() acquired a token for scope "https://ai.azure.com/.default"
+[2026-11-18T12:35:37+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:35:37+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:35:37+05:30] Response: ==> REQUEST/RESPONSE (Try=1/84.9572ms, OpTime=85.4979ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:02:24 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: 21f483d94345fbef08feb96370122a62
+
+[2026-11-18T12:35:37+05:30] Retry: response 200
+[2026-11-18T12:35:37+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:35:47+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:35:47+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:35:47+05:30] Response: ==> REQUEST/RESPONSE (Try=1/82.1015ms, OpTime=82.1015ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:02:34 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: 61ca1270eb651a904c6b03454f0ee912
+
+[2026-11-18T12:35:47+05:30] Retry: response 200
+[2026-11-18T12:35:47+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:35:57+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:35:57+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:35:57+05:30] Response: ==> REQUEST/RESPONSE (Try=1/91.5522ms, OpTime=91.5522ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:02:44 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: 9a1a37afa99772273543027cab04b6d6
+
+[2026-11-18T12:35:57+05:30] Retry: response 200
+[2026-11-18T12:35:57+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:36:07+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:36:07+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:36:07+05:30] Response: ==> REQUEST/RESPONSE (Try=1/87.3022ms, OpTime=87.3022ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:02:54 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: 9decc746f1ee404012b8aba8f698187a
+
+[2026-11-18T12:36:07+05:30] Retry: response 200
+[2026-11-18T12:36:07+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:36:17+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:36:17+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:36:17+05:30] Response: ==> REQUEST/RESPONSE (Try=1/189.7696ms, OpTime=189.7696ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:03:04 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: 1ccc831ebcb4e8a0bd9e58403686d6cb
+
+[2026-11-18T12:36:17+05:30] Retry: response 200
+[2026-11-18T12:36:17+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:36:27+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:36:27+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:36:28+05:30] Response: ==> REQUEST/RESPONSE (Try=1/149.6511ms, OpTime=149.6511ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:03:15 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: 39aadabcf1465a6c5a88e5d7c46e4ade
+
+[2026-11-18T12:36:28+05:30] Retry: response 200
+[2026-11-18T12:36:28+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:36:38+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:36:38+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:36:38+05:30] Response: ==> REQUEST/RESPONSE (Try=1/90.2783ms, OpTime=90.2783ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:03:25 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: 4762f851d89175921e2530116e2f343c
+
+[2026-11-18T12:36:38+05:30] Retry: response 200
+[2026-11-18T12:36:38+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:36:48+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:36:48+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:36:48+05:30] Response: ==> REQUEST/RESPONSE (Try=1/83.8729ms, OpTime=83.8729ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:03:34 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: 1827684e621d5056a3a526d2c2354de8
+
+[2026-11-18T12:36:48+05:30] Retry: response 200
+[2026-11-18T12:36:48+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:36:58+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:36:58+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:36:58+05:30] Response: ==> REQUEST/RESPONSE (Try=1/93.2043ms, OpTime=93.2043ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:03:45 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: 641ad590da1447026db191c0c0898a3f
+
+[2026-11-18T12:36:58+05:30] Retry: response 200
+[2026-11-18T12:36:58+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:37:08+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:37:08+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:37:08+05:30] Response: ==> REQUEST/RESPONSE (Try=1/79.0903ms, OpTime=79.0903ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:03:55 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: 42485cea98b045954e264062b2c86089
+
+[2026-11-18T12:37:08+05:30] Retry: response 200
+[2026-11-18T12:37:08+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:37:18+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:37:18+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:37:18+05:30] Response: ==> REQUEST/RESPONSE (Try=1/216.8575ms, OpTime=216.8575ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:04:05 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: cdbd43a7c8d59880570986278ea7b942
+
+[2026-11-18T12:37:18+05:30] Retry: response 200
+[2026-11-18T12:37:18+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:37:28+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:37:28+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:37:28+05:30] Response: ==> REQUEST/RESPONSE (Try=1/98.0337ms, OpTime=98.0337ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:04:15 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: c4b6340a71095e3e2e2fbd350adb026c
+
+[2026-11-18T12:37:28+05:30] Retry: response 200
+[2026-11-18T12:37:28+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:37:38+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:37:38+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:37:38+05:30] Response: ==> REQUEST/RESPONSE (Try=1/96.7431ms, OpTime=96.7431ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:04:25 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: e993973c8c517e81b393c56bbe70437e
+
+[2026-11-18T12:37:38+05:30] Retry: response 200
+[2026-11-18T12:37:38+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:37:48+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:37:48+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:37:48+05:30] Response: ==> REQUEST/RESPONSE (Try=1/85.9723ms, OpTime=85.9723ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:04:35 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: ee669e248330829a7df1f5957494531b
+
+[2026-11-18T12:37:48+05:30] Retry: response 200
+[2026-11-18T12:37:48+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:37:58+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:37:58+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:37:59+05:30] Response: ==> REQUEST/RESPONSE (Try=1/85.4259ms, OpTime=85.4259ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:04:46 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: a4de5feea8426c971a3b70953a5237ac
+
+[2026-11-18T12:37:59+05:30] Retry: response 200
+[2026-11-18T12:37:59+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:38:09+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:38:09+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:38:09+05:30] Response: ==> REQUEST/RESPONSE (Try=1/80.5495ms, OpTime=81.5652ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:04:55 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: 11228657878ad2347182b51c73f1286c
+
+[2026-11-18T12:38:09+05:30] Retry: response 200
+[2026-11-18T12:38:09+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:38:19+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:38:19+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:38:19+05:30] Response: ==> REQUEST/RESPONSE (Try=1/90.2493ms, OpTime=90.2493ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:05:06 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: e372df662f9fbdf5d4ce75f49d0d7ad3
+
+[2026-11-18T12:38:19+05:30] Retry: response 200
+[2026-11-18T12:38:19+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:38:29+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:38:29+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:38:29+05:30] Response: ==> REQUEST/RESPONSE (Try=1/89.6761ms, OpTime=89.6761ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:05:16 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: 553a7b52b9893af6261428f02e05e795
+
+[2026-11-18T12:38:29+05:30] Retry: response 200
+[2026-11-18T12:38:29+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:38:39+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:38:39+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:38:39+05:30] Response: ==> REQUEST/RESPONSE (Try=1/82.6167ms, OpTime=82.6167ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:05:26 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: 9d6e054c106d5a46f796b58c51a1f63c
+
+[2026-11-18T12:38:39+05:30] Retry: response 200
+[2026-11-18T12:38:39+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:38:49+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:38:49+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:38:49+05:30] Response: ==> REQUEST/RESPONSE (Try=1/99.9586ms, OpTime=99.9586ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:05:36 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: 61d162e783bada5d6e22ab1e5d079095
+
+[2026-11-18T12:38:49+05:30] Retry: response 200
+[2026-11-18T12:38:49+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:38:59+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:38:59+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:38:59+05:30] Response: ==> REQUEST/RESPONSE (Try=1/99.7757ms, OpTime=100.2876ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:05:45 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: 4f94a01ff13358aaad841161f05d13b3
+
+[2026-11-18T12:38:59+05:30] Retry: response 200
+[2026-11-18T12:38:59+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:39:09+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:39:09+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:39:09+05:30] Response: ==> REQUEST/RESPONSE (Try=1/88.2552ms, OpTime=88.2552ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:05:56 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: 3daefb83d349f6a54996ee9bc52aced3
+
+[2026-11-18T12:39:09+05:30] Retry: response 200
+[2026-11-18T12:39:09+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:39:19+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:39:19+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:39:19+05:30] Response: ==> REQUEST/RESPONSE (Try=1/102.7811ms, OpTime=102.7811ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:06:06 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: f7ae846e8be3b48137bca54f5c77ec78
+
+[2026-11-18T12:39:19+05:30] Retry: response 200
+[2026-11-18T12:39:19+05:30] Retry: exit due to non-retriable status code
+[2026-11-18T12:39:29+05:30] Retry: =====> Try=1 for GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+[2026-11-18T12:39:29+05:30] Request: ==> OUTGOING REQUEST (Try=1)
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+
+[2026-11-18T12:39:30+05:30] Response: ==> REQUEST/RESPONSE (Try=1/271.9701ms, OpTime=271.9701ms) -- RESPONSE RECEIVED
+   GET https://lavamdn04-2479-resource.services.ai.azure.com/api/projects/lavamdn04-2479/agents/vmware-agent/versions/4?api-version=v1
+   Authorization: REDACTED
+   User-Agent: azsdk-go-azure-ai-agents/v1.0.0 (go1.26.4; Windows_NT),azd-ext-azure-ai-agents/1.2.0
+   X-Ms-Correlation-Request-Id: 5993ddee-2736-42f7-315e-607acc21ab5c
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 200 OK
+   Access-Control-Expose-Headers: REDACTED
+   Api-Supported-Versions: REDACTED
+   Apim-Request-Id: REDACTED
+   Azureml-Served-By-Cluster: REDACTED
+   Content-Type: application/json; charset=utf-8
+   Date: Wed, 18 Nov 2026 07:06:16 GMT
+   Request-Context: REDACTED
+   Server: istio-envoy
+   Strict-Transport-Security: REDACTED
+   Vary: REDACTED
+   X-Content-Type-Options: REDACTED
+   X-Ms-Region: REDACTED
+   X-Ms-Response-Type: REDACTED
+   X-Request-Id: 82b10e69f56b043fd1e8d3bc004588dd
+
+[2026-11-18T12:39:30+05:30] Retry: response 200
+[2026-11-18T12:39:30+05:30] Retry: exit due to non-retriable status code

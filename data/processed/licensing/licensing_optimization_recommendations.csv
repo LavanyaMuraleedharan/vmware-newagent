@@ -1,0 +1,21 @@
+﻿license_id,software_product,software_feature,license_metric,entitled_quantity,peak_concurrent_usage,peak_utilization_pct,average_utilization_pct_full_period,unused_at_peak_quantity,reclaim_candidate,reclaim_candidate_quantity,estimated_annual_financial_impact,currency,priority,recommendation,approval_required,execution_status,data_origin
+SIM-LIC-001,DesignSuite,CAD_Pro,named_user,40,,,,,Not evaluated,,,INR,Undetermined,Review assigned users and actual user activity,Yes,Not executed,simulated
+SIM-LIC-002,DesignSuite,CAD_Render,concurrent,25,11,44.0,7.96,14,Yes,14,124771.5,INR,Medium,Review entitlement reduction before renewal,Yes,Not executed,simulated
+SIM-LIC-003,SimuWorks,SIM_Core,concurrent,30,22,73.33,11.19,8,No,0,,INR,Low,Continue monitoring license usage,Yes,Not executed,simulated
+SIM-LIC-004,SimuWorks,SIM_Advanced,concurrent,18,15,83.33,18.33,3,No,0,,INR,Low,Continue monitoring license usage,Yes,Not executed,simulated
+SIM-LIC-005,NumeriLab,MATLAB_Base,concurrent,50,6,12.0,1.54,44,Yes,44,2115281.96,INR,Medium,Review entitlement reduction before renewal,Yes,Not executed,simulated
+SIM-LIC-006,NumeriLab,MATLAB_Toolbox,concurrent,35,10,28.57,5.56,25,Yes,25,804191.75,INR,Medium,Review entitlement reduction before renewal,Yes,Not executed,simulated
+SIM-LIC-007,EngiSoft,CAE_Solver,concurrent,22,17,77.27,14.8,5,No,0,,INR,Low,Continue monitoring license usage,Yes,Not executed,simulated
+SIM-LIC-008,EngiSoft,CAE_PrePost,concurrent,28,11,39.29,6.98,17,Yes,17,120055.7,INR,Medium,Review entitlement reduction before renewal,Yes,Not executed,simulated
+SIM-LIC-009,CircuitPro,PCB_Design,concurrent,20,12,60.0,9.98,8,Yes,8,140070.48,INR,Medium,Review entitlement reduction before renewal,Yes,Not executed,simulated
+SIM-LIC-010,CircuitPro,PCB_Sim,concurrent,16,15,93.75,20.86,1,No,0,,INR,High,Retain capacity and monitor license demand,Yes,Not executed,simulated
+SIM-LIC-011,VizWorks,DataViz_Pro,named_user,35,,,,,Not evaluated,,,INR,Undetermined,Review assigned users and actual user activity,Yes,Not executed,simulated
+SIM-LIC-012,VizWorks,DataViz_Advanced,concurrent,15,10,66.67,12.59,5,Yes,5,76535.8,INR,Medium,Review entitlement reduction before renewal,Yes,Not executed,simulated
+SIM-LIC-013,CodeForge,Dev_IDE,named_user,60,,,,,Not evaluated,,,INR,Undetermined,Review assigned users and actual user activity,Yes,Not executed,simulated
+SIM-LIC-014,CodeForge,Dev_Test,concurrent,24,16,66.67,13.94,8,Yes,8,91433.76,INR,Medium,Review entitlement reduction before renewal,Yes,Not executed,simulated
+SIM-LIC-015,GeoSuite,GIS_Desktop,concurrent,18,8,44.44,4.13,10,Yes,10,242795.2,INR,Medium,Review entitlement reduction before renewal,Yes,Not executed,simulated
+SIM-LIC-016,GeoSuite,GIS_Analysis,concurrent,12,11,91.67,16.02,1,No,0,,INR,High,Retain capacity and monitor license demand,Yes,Not executed,simulated
+SIM-LIC-017,MediaLab,Media_Edit,named_user,25,,,,,Not evaluated,,,INR,Undetermined,Review assigned users and actual user activity,Yes,Not executed,simulated
+SIM-LIC-018,MediaLab,Media_Render,concurrent,14,14,100.0,22.97,0,No,0,,INR,High,Investigate denied requests and license capacity,Yes,Not executed,simulated
+SIM-LIC-019,DataAdmin,DB_Admin,concurrent,32,12,37.5,5.94,20,Yes,20,200397.0,INR,Medium,Review entitlement reduction before renewal,Yes,Not executed,simulated
+SIM-LIC-020,DataAdmin,DB_Performance,concurrent,20,18,90.0,16.94,2,No,0,,INR,High,Retain capacity and monitor license demand,Yes,Not executed,simulated

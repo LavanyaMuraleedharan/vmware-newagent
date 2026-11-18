@@ -1,0 +1,27 @@
+{
+    "domain": "VMware",
+    "files_discovered": 1250,
+    "files_processed": 1250,
+    "files_failed": 0,
+    "total_samples_processed": 11221800,
+    "total_valid_cpu_samples": 9309174,
+    "total_valid_memory_samples": 9631964,
+    "data_quality_summary": {
+        "quality_zero_cpu_capacity": 1593544,
+        "quality_cpu_usage_above_capacity": 319082,
+        "quality_cpu_percentage_above_100": 319082,
+        "quality_cpu_negative_values": 0,
+        "quality_zero_memory_capacity": 1589208,
+        "quality_memory_usage_above_capacity": 628,
+        "quality_memory_negative_values": 0,
+        "quality_missing_metric_values": 0,
+        "quality_invalid_cpu_utilization_samples": 1912626,
+        "quality_invalid_memory_utilization_samples": 1589836
+    },
+    "output_metrics": "C:\\Users\\vasundra sri\\Desktop\\AI_AGENT\\data\\processed\\vmware\\vmware_file_metrics.csv",
+    "output_errors": "C:\\Users\\vasundra sri\\Desktop\\AI_AGENT\\data\\processed\\vmware\\vmware_ingestion_errors.csv",
+    "timestamp_note": "Timestamp units detected from numeric magnitude. Source header says ms, but sample values around 1.37 billion indicate Unix seconds.",
+    "source_identifier_note": "source_file_id is a relative file path, not a confirmed VM ID.",
+    "financial_cost_note": "No actual financial cost is present in these VMware performance files.",
+    "validation_note": "Validated CPU and memory utilization excludes zero-capacity, negative and above-capacity samples. Raw measurements are retained separately."
+}
